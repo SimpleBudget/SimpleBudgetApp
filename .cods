@@ -1,2 +1,2 @@
 BUILD_COMMAND='./mvnw package'
-JAR_FILE=/SimpleBudgetApp-0.0.1-SNAPSHOT.jar
+JAR_FILE=target/budgetapp-0.0.1-SNAPSHOT.jar
