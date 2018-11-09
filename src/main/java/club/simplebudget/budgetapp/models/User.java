@@ -1,5 +1,7 @@
 package club.simplebudget.budgetapp.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,7 +35,6 @@ public class User {
         this.password = password;
         this.phonenumber = phonenumber;
     }
-
 
     public User(long id, String username, String email, String password, long phonenumber) {
         this.id = id;
