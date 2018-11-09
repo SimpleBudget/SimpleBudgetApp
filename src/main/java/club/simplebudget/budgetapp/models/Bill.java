@@ -13,25 +13,22 @@ public class Bill {
     private Double amount;
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Account account;
+
 
     public Bill() {
     }
 
-    public Bill(long id, String name, Double amount, User user, Account account) {
+    public Bill(long id, String name, Double amount, User user) {
         this.id = id;
         this.name = name;
         this.amount = amount;
         this.user = user;
-        this.account = account;
     }
 
-    public Bill(String name, Double amount, User user, Account account) {
+    public Bill(String name, Double amount, User user) {
         this.name = name;
         this.amount = amount;
         this.user = user;
-        this.account = account;
     }
 
     public long getId() {
@@ -64,13 +61,5 @@ public class Bill {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 }
