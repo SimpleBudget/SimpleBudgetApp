@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
+
 
     public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
         this.users = users;
@@ -25,11 +27,16 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user) {
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
-        return "redirect:/login";
+    public String saveUser(@ModelAttribute User user, @RequestParam String password, @RequestParam String confirmpassword) {
+        if (password.equals(confirmpassword)) {
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            users.save(user);
+            return "redirect:/login";
+        } else {
+            return "redirect:/sign-up";
+        }
+
     }
     @GetMapping("/users/{id}/edit")
     public String editProfile(@PathVariable Long id, Model vModel){

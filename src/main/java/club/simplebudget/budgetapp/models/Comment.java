@@ -11,11 +11,11 @@ public class Comment {
     private String comment;
     @Column
     private long rating;
-    @OneToOne(cascade =  CascadeType.ALL)
+    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
     private Post post;
     @OneToOne
     private User user;
-    @OneToOne(cascade =  CascadeType.ALL)
+    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
     private Comment commentId;
 
     public Comment() {
