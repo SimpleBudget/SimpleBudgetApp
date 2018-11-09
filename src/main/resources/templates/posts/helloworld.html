@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Hello, World!!</title>
+    <th:block th:include="partials :: head('Welcome to The Blog')"></th:block>
+
 </head>
 <body>
+<nav th:replace="partials :: navbar"/>
+
 <h1>Hello, World!!!</h1>
+
+<footer th:replace="partials :: footer"/>
 
 </body>
 </html>
