@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Log In')">
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"/>
+<div class="container">
+    <div class ="row">
+        <div class="col l12">
+            <h3>Edit user</h3>
+            <div class = "col l8 offset-l2">
+                <form  th:object="${user}" th:action="@{|/users/${user.id}/edit|}" th:method="POST" >
+                    <label for="username">Username</label>
+                    <input class="form-control disa" id="username" th:field="*{username}" />
+                    <!--<p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>-->
+
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" th:field="*{email}" />
+                    <!--<p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
+
+                    <label for="phonenumber">Phonenumber</label>
+                    <input class="form-control" id="phonenumber" th:field="*{phonenumber}" />
+
+                    <!--<label for="password">Password Confirmation For Changes</label>-->
+                    <!--<input type="password" id="password" class="form-control" name="password" />-->
+
+                    <label for="newpassword">New Password</label>
+                    <input type="password" id="newpassword" class="form-control" name ="newpassword" />
+                    <!--<p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
+
+                    <label for="confirmpassword">Confirm New Password</label>
+                    <input type="password" id="confirmpassword" class="form-control" name ="confirmpassword" />
+
+                    <input  class="btn-danger" type="submit" />
+                </form>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>
+<footer th:replace="partials :: footer"/>
+</body>
+</html>
