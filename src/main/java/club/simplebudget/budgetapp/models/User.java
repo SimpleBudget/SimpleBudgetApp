@@ -15,7 +15,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     @Column
-    private long phonenumber;
+    private String phonenumber;
 
     public User() {
     }
@@ -27,7 +27,7 @@ public class User {
         phonenumber = copy.phonenumber;
     }
 
-    public User(String username, String email, String password, long phonenumber) {
+    public User(String username, String email, String password, String phonenumber) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -35,7 +35,7 @@ public class User {
     }
 
 
-    public User(long id, String username, String email, String password, long phonenumber) {
+    public User(long id, String username, String email, String password, String phonenumber) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -75,11 +75,11 @@ public class User {
         this.password = password;
     }
 
-    public long getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(long phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 }
