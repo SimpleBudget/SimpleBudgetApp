@@ -1,5 +1,7 @@
 package club.simplebudget.budgetapp.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
