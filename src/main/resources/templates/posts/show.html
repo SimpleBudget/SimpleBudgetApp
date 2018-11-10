@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head('Single Post')">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
+    <th:block th:include="partials :: navbar"></th:block>
+    <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{'/posts/' + ${Post.id} + '/edit'}">Edit</a>
+</nav>
+<div class="card">
+    <div class="card-header">
+        <span th:text="'Posted By: ' + ${Post.user.username}"></span>
+    </div>
+    <div class="card-body">
+        <h1 class="card-title" th:text="${Post.title}"></h1>
+        <p class="card-text" th:text="${Post.body}"></p>
+    </div>
+</div>
+<form th:object="${comment}" th:action="|/comment/${Post.id}|" th:method="get" sec:authorize="isAuthenticated()" id="commentForm"><button onclick="buttonFunction()" id="comment">comment</button></form>
+
+<script>
+    function buttonFunction() {
+        let button = document.getElementById("comment");
+        let commentForm = document.getElementById("commentForm");
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            commentForm.innerHTML = "<div class='form-group'>\n" +
+                "    <div class='form-group'>\n" +
+                "    <label for='comment'>comment:</label>\n" +
+                "    <textarea class='form-control' rows='4' cols='50' id='comment' th:field='*{comment}'></textarea>\n" +
+                "    <br/>\n" +
+                "    </div>\n" +
+                "    <input type='submit' formaction='/comment/create' formmethod='post'/> </div>"
+        });
+    }
+</script>
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>
