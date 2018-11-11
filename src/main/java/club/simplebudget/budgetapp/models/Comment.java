@@ -8,12 +8,14 @@ public class Comment {
     @GeneratedValue
     private long id;
     @Column(nullable = false)
-    private String comment;
+    private String commentbody;
     @Column
     private long rating;
-    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade =  CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
     private Post post;
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
     private User user;
     @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
     private Comment commentId;
@@ -23,7 +25,7 @@ public class Comment {
 
     public Comment(long id, String comment, long rating, Post post, User user, Comment commentId) {
         this.id = id;
-        this.comment = comment;
+        this.commentbody = comment;
         this.rating = rating;
         this.post = post;
         this.user = user;
@@ -31,7 +33,7 @@ public class Comment {
     }
 
     public Comment(String comment, long rating, Post post, User user, Comment commentId) {
-        this.comment = comment;
+        this.commentbody = comment;
         this.rating = rating;
         this.post = post;
         this.user = user;
@@ -46,12 +48,12 @@ public class Comment {
         this.id = id;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCommentbody() {
+        return commentbody;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentbody(String commentbody) {
+        this.commentbody = commentbody;
     }
 
     public long getRating() {

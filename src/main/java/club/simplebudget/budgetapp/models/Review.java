@@ -11,7 +11,7 @@ public class Review {
     private String body;
     @Column(nullable = false)
     private long rating;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private User user;
 
     public Review() {

@@ -29,7 +29,6 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable long id, Model model){
         model.addAttribute("Post",postRepository.findOne(id));
-        model.addAttribute("comment", new Comment());
         return "posts/show";
     }
     @GetMapping("/posts/create")

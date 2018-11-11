@@ -1,6 +1,8 @@
 package club.simplebudget.budgetapp.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -14,20 +16,24 @@ public class Post {
     private String body;
     @OneToOne
     private User user;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> comments;
     public Post(){
     }
 
-    public Post(long id, String title, String body, User user) {
+    public Post(long id, String title, String body, User user, ArrayList<Comment> comments) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.user = user;
+        this.comments = comments;
     }
 
-    public Post(String title, String body, User user){
+    public Post(String title, String body, User user, ArrayList<Comment> comments) {
         this.title = title;
         this.body = body;
         this.user = user;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -60,5 +66,16 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+    public void addComment(Comment comment){
+        comments.add(comment);
     }
 }
