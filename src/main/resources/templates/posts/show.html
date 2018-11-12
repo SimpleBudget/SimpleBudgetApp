@@ -6,7 +6,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <th:block th:include="partials :: navbar"></th:block>
-    <!--<a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{'/posts/' + ${Post.id} + '/edit'}">Edit</a>-->
+    <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{'/posts/' + ${Post.id} + '/edit'}">Edit Post</a>
 </nav>
 <div class="card">
     <div class="card-header">

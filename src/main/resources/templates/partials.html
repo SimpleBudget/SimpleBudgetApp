@@ -9,7 +9,9 @@
 <nav th:fragment="navbar" class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
         <a class="nav-item nav-link active" href="/">Home</a>
-        <a class="nav-item nav-link active" href="/post">Community</a>
+        <a class="nav-item nav-link active" href="/posts">Community</a>
+        <a class="nav-item nav-link active" href="/posts/create">Create Post</a>
+
         <a class="nav-item nav-link "  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
 
         <form th:action="@{/logout}" th:method="POST">
@@ -19,7 +21,7 @@
     </div>
     <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
         <a class="nav-item nav-link active" href="/">Home</a>
-        <a class="nav-item nav-link active " href="/post">Community</a>
+        <a class="nav-item nav-link active " href="/posts">Community</a>
         <a th:href="'/sign-up'" class="nav-item nav-link ">Sign Up!</a>
         <a th:href="'/login'" class="nav-item nav-link ">Login</a>
     </div>
