@@ -13,31 +13,38 @@ public class Comment {
     private String commentbody;
     @Column
     private long rating;
-    @ManyToMany(mappedBy = "comments")
-    private List<Post> posts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private Post post;
     @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "comment_id")
+    private List<Comment> comments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment_id")
     private Comment commentId;
 
     public Comment() {
     }
 
-    public Comment(long id, String comment, long rating, ArrayList<Post> posts, User user, Comment commentId) {
+    public Comment(long id, String comment, long rating, Post post, User user, Comment commentId, List<Comment> comments) {
         this.id = id;
         this.commentbody = comment;
         this.rating = rating;
-        this.posts = posts;
+        this.post = post;
         this.user = user;
         this.commentId = commentId;
+        this.comments = comments;
     }
 
-    public Comment(String commentbody, long rating, ArrayList<Post> posts, User user, Comment commentId) {
+    public Comment(String commentbody, long rating, Post post, User user, List<Comment> comments, Comment commentId) {
         this.commentbody = commentbody;
         this.rating = rating;
-        this.posts = posts;
+        this.post = post;
         this.user = user;
+        this.comments = comments;
         this.commentId = commentId;
     }
 
@@ -65,15 +72,12 @@ public class Comment {
         this.rating = rating;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-    public void addPost(Post post){
-        posts.add(post);
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public User getUser() {
@@ -82,6 +86,14 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Comment getCommentId() {

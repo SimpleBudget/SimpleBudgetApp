@@ -25,9 +25,8 @@ public class CommentController {
         Post thePost = postRepository.findOne(id);
         newComment.setCommentbody(commentbody);
         newComment.setUser(loggedInUser);
+        newComment.setPost(thePost);
         commentRepository.save(newComment);
-        thePost.addComment(newComment);
-        postRepository.save(thePost);
         return "redirect:/posts/" + id;
 
     }
@@ -40,7 +39,7 @@ public class CommentController {
         reply.setUser(loggedInUser);
         reply.setCommentId(theComment);
         commentRepository.save(reply);
-        return "redirect:/posts/" + theComment.getPosts().get(0).getId();
+        return "redirect:/posts/" + theComment.getPost().getId();
 
     }
 }

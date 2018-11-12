@@ -26,24 +26,41 @@
             </div>
        <input type='submit'/> </div> </form>
 <button id="show">Comment</button>
-<div class="card" th:each="comment : ${Post.comments}">
-    <div class="card-header">
-        <span th:text="'Posted By: ' + ${comment.user.username}"></span>
-    </div>
-    <div class="card-body">
-        <p class="card-text" th:text="${comment.commentbody}"></p>
-    </div>
-    <button th:if="${comment != null}" class="showReply">Reply</button>
-    <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
-        <div class='form-group'>
-            <div class='form-group'>
-                <label for='reply'>reply:</label>
-                <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply"></textarea>
-                <br/>
+<ul>
+    <li th:each="comment : ${Post.comments}">
+        <div class="card">
+            <div class="card-header">
+                <span th:text="'Posted By: ' + ${comment.user.username}"></span>
             </div>
-            <input type='submit'/> </div>
-    </form>
-</div>
+            <div class="card-body">
+                <p class="card-text" th:text="${comment.commentbody}"></p>
+            </div>
+            <button th:if="${comment != null}" class="showReply">Reply</button>
+            <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
+                <div class='form-group'>
+                    <div class='form-group'>
+                        <label for='reply'>reply:</label>
+                        <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply"></textarea>
+                        <br/>
+                    </div>
+                    <input type='submit'/> </div>
+            </form>
+            <ul>
+                <li th:each="comment : ${comment.comments}">
+                    <div class="card">
+                        <div class="card-header">
+                            <span th:text="'Posted By: ' + ${comment.user.username}"></span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${comment.commentbody}"></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>
+
 
 
 <script>

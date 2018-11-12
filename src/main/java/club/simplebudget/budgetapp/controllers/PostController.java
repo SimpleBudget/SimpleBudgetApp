@@ -3,6 +3,7 @@ package club.simplebudget.budgetapp.controllers;
 import club.simplebudget.budgetapp.models.Comment;
 import club.simplebudget.budgetapp.models.Post;
 import club.simplebudget.budgetapp.models.User;
+import club.simplebudget.budgetapp.repositories.CommentRepository;
 import club.simplebudget.budgetapp.repositories.PostRepository;
 import club.simplebudget.budgetapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class PostController {
     private PostRepository postRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping("/posts")
     public String posts(Model model){
