@@ -9,9 +9,8 @@
 <nav th:fragment="navbar" class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
         <a class="nav-item nav-link active" href="/">Home</a>
-        <a class="nav-item nav-link "  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
         <a class="nav-item nav-link active" href="/post">Community</a>
-        <a class="nav-item nav-link active" href="/">About Us!</a>
+        <a class="nav-item nav-link "  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
 
         <form th:action="@{/logout}" th:method="POST">
             <button id="logoutBtn" type="submit" class="nav-item nav-link navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -19,18 +18,31 @@
 
     </div>
     <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
-        <a class="nav-item nav-link active "  href="/">Home</a>
+        <a class="nav-item nav-link active" href="/">Home</a>
         <a class="nav-item nav-link active " href="/post">Community</a>
-        <a class="nav-item nav-link active " href="/">About Us!</a>
         <a th:href="'/sign-up'" class="nav-item nav-link ">Sign Up!</a>
         <a th:href="'/login'" class="nav-item nav-link ">Login</a>
     </div>
 </nav>
-<footer th:fragment="footer" style="position:absolute;
+<footer th:fragment="footer" style="position:relative;
    bottom:0;
    width:100%;
    height:60px;   /* Height of the footer */
    background:#6cf;">
+    <div class="container text-center p-2 white">
+        <div class="col-12">
+            <a class="link-custom" th:href="'/'">Home </a>
+            <span>|</span>
+            <a class="link-custom" th:href="'/faq'">FAQ</a>
+            <span>|</span>
+            <a class="link-custom" th:href="'/about-team'">The Team</a>
+            <span>|</span>
+            <a class="link-custom" th:href="'/supincome'">Supplemental Income</a>
+        </div>
+        <div class="col-12 footer-bottom text-center white">
+            <em>SimpleBudget Copyright &copy; 2018</em>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

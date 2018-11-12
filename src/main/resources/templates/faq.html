@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="partials :: head('F.A.Q Page!')"></th:block>
+</head>
+<body>
+<nav th:replace="partials :: navbar"/>
+<div class="container text-center mt-4">
+    <div>
+        <h2 class="faq-heading mt-5"> Frequently Asked Questions</h2>
+        <hr/>
+    </div>
+
+    <div class="mt-4">
+        <section id="questions mt-5">
+            <!-- ===== question 1 ===== -->
+            <div class="question1 questionLead">
+                <div class="accordion" id="accordionExample">
+                    <div id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
+                                <i class="far fa-question-circle"></i> Is SimpleBudget a free service?
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Absolutely, and it always will be a free service.
+                    </div>
+                </div>
+            </div>
+            <!-- ===== question 2 ===== -->
+            <div class="question2 questionLead">
+                <div class="accordion" id="accordionExample">
+                    <div id="heading headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
+                                <i class="far fa-question-circle"></i> Is it easy to use or sign up for?
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+                <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Yes, just register as a user and then login to the site.  Once logged in, just navigate to the Budget Calculator or community to get started!
+                    </div>
+                </div>
+            </div>
+            <!-- ===== question 3 ===== -->
+            <div class="question2 questionLead">
+                <div class="accordion" id="accordionExample">
+                    <div id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree">
+                                <i class="far fa-question-circle"></i> What if I have a question to ask about budgeting better, is that easy to do?
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+                <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Yes, in the community page you will see other budget savy users posting and helping out each other. If you feel like you don't wanna post you can then search and find a post according to your needs.
+                    </div>
+                </div>
+            </div>
+            <!-- ===== question 4 ===== -->
+            <div class="question4 questionLead">
+                <div class="accordion" id="accordionExample">
+                    <div id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-controls="collapseFour">
+                                <i class="far fa-question-circle"></i> Can I opt in to receive notifications for post?
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+                <div id="collapseFour" class="collapse hide mb-5" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Yes, in your dashboard you will be able to opt-in for post/notifications.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer th:replace="partials :: footer"/>
+</body>
+</html>

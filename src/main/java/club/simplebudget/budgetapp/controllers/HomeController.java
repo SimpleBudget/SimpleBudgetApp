@@ -10,4 +10,21 @@ public class HomeController {
     public String homepage(){
         return "homepage";
     }
+    @GetMapping("/faq")
+    public String faqPage(){
+        return "faq";
+    }
+
+    @GetMapping("/about-team")
+    public String aboutUs(){
+        return "about-team";
+    }
+    @GetMapping("/supincome")
+    public String supPage(){
+        return "supincome";
+    }
+    @GetMapping("/reviews")
+    public String reviews(){
+        return "reviews";
+    }
 }

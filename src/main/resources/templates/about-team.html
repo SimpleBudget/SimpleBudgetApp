@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="partials :: head('About the Team!')"></th:block>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"/>
+
+<!-- ====================  About Team ==================== -->
+<section id="team" class="section">
+    <div class="container-fluid text-center">
+        <h2 class="section-head mt-3"><i class="fas fa-users header-icons"></i> Meet The Team</h2>
+        <p class="lead hideOnSmall">The developers behind <a th:href="'/'" class="link-custom"> Simple Budget</a>
+        </p>
+        <hr />
+        <div class="grid-profile">
+
+            <!-- =================  brittany profile ================= -->
+            <div id="brittany col-4">
+                <div class="image">
+                    <img src="https://s3.amazonaws.com/alumni.codeup.com/BrittanyRussell.jpg" alt="" />
+                </div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Brittany Russell - </h4>
+                    <a href="mailto:brittanyrussell1103@gmail.com">
+                        Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/brittany-russell-codeup/" target="_#">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/brittanyrussell">
+                        GitHub
+                    </a>
+            </div>
+
+            <!-- ================= hunters profile ================= -->
+            <div id="hunter col-4">
+                <div class="image">
+                    <img src="https://s3.amazonaws.com/alumni.codeup.com/HunterHouts.jpg" alt="" />
+                </div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Hunter Houts- </h4>
+                <div id="icons">
+                    <a href="mailto:hunter.alexander.houts@gmail.com">
+                        Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/hunter-houts/" target="_#">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/Hunter-Houts">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- ================= patrick profile ================= -->
+            <div id="patrick col-4">
+                <div class="image">
+                    <img src="https://s3.amazonaws.com/alumni.codeup.com/PatrickFisher.jpg" alt="" />
+                </div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Patrick Fisher - </h4>
+                <div id="icons">
+                    <a href="mailto:patrick.ryan.fisher@gmail.com">
+                        Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/patrickryanfisher/" target="_#">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/patrickrfisher">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====================  Footer Section ====================  -->
+<footer th:replace="partials :: footer"/>
+
+</body>
+</html>
