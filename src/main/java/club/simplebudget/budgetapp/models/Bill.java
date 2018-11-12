@@ -11,8 +11,11 @@ public class Bill {
     private String name;
     @Column(nullable = false)
     private Double amount;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
 
     public Bill() {

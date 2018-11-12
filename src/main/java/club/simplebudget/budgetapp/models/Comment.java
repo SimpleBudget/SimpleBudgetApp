@@ -1,5 +1,7 @@
 package club.simplebudget.budgetapp.models;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "comments")
@@ -8,33 +10,41 @@ public class Comment {
     @GeneratedValue
     private long id;
     @Column(nullable = false)
-    private String comment;
+    private String commentbody;
     @Column
     private long rating;
-    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
     private Post post;
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne(cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "comment_id")
+    private List<Comment> comments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment_id")
     private Comment commentId;
 
     public Comment() {
     }
 
-    public Comment(long id, String comment, long rating, Post post, User user, Comment commentId) {
+    public Comment(long id, String comment, long rating, Post post, User user, Comment commentId, List<Comment> comments) {
         this.id = id;
-        this.comment = comment;
+        this.commentbody = comment;
         this.rating = rating;
         this.post = post;
         this.user = user;
         this.commentId = commentId;
+        this.comments = comments;
     }
 
-    public Comment(String comment, long rating, Post post, User user, Comment commentId) {
-        this.comment = comment;
+    public Comment(String commentbody, long rating, Post post, User user, List<Comment> comments, Comment commentId) {
+        this.commentbody = commentbody;
         this.rating = rating;
         this.post = post;
         this.user = user;
+        this.comments = comments;
         this.commentId = commentId;
     }
 
@@ -46,12 +56,12 @@ public class Comment {
         this.id = id;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCommentbody() {
+        return commentbody;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentbody(String commentbody) {
+        this.commentbody = commentbody;
     }
 
     public long getRating() {
@@ -76,6 +86,14 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Comment getCommentId() {

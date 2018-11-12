@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="partials :: head('Single Post')">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
+    <th:block th:include="partials :: navbar"></th:block>
+    <!--<a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{'/posts/' + ${Post.id} + '/edit'}">Edit</a>-->
+</nav>
+<div class="card">
+    <div class="card-header">
+        <span th:text="'Posted By: ' + ${Post.user.username}"></span>
+    </div>
+    <div class="card-body">
+        <h1 class="card-title" th:text="${Post.title}"></h1>
+        <p class="card-text" th:text="${Post.body}"></p>
+    </div>
+</div>
+<form  style="display: none;" th:action='|/comment/${Post.id}|' th:method='post' sec:authorize='isAuthenticated()' id="commentForm">
+    <div class='form-group'>
+        <div class='form-group'>
+           <label for='comment'>comment:</label>
+           <textarea class='form-control' rows='4' cols='50' id="comment" name="commentbody"></textarea>
+            <br/>
+            </div>
+       <input type='submit'/> </div> </form>
+<button id="show">Comment</button>
+<ul>
+    <li th:each="comment : ${Post.comments}">
+        <div class="card">
+            <div class="card-header">
+                <span th:text="'Posted By: ' + ${comment.user.username}"></span>
+            </div>
+            <div class="card-body">
+                <p class="card-text" th:text="${comment.commentbody}"></p>
+            </div>
+            <button th:if="${comment != null}" class="showReply">Reply</button>
+            <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
+                <div class='form-group'>
+                    <div class='form-group'>
+                        <label for='reply'>reply:</label>
+                        <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply"></textarea>
+                        <br/>
+                    </div>
+                    <input type='submit'/> </div>
+            </form>
+            <ul>
+                <li th:each="comment : ${comment.comments}">
+                    <div class="card">
+                        <div class="card-header">
+                            <span th:text="'Posted By: ' + ${comment.user.username}"></span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${comment.commentbody}"></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>
+
+
+
+<script>
+        let button = document.getElementById("show");
+        let commentForm = document.getElementById("commentForm");
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            commentForm.style.display = "block";
+            button.style.display = "none";
+        });
+        let showreply = Array.from(document.getElementsByClassName("showReply"));
+        let replyForm = Array.from(document.getElementsByClassName("replyForm"));
+        showreply.forEach((element, index)=>{
+            element.addEventListener("click", (e) => {
+                e.preventDefault();
+                button.style.display = "none";
+                replyForm[index].style.display = "block";
+            });
+        });
+</script>
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

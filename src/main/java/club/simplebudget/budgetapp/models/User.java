@@ -3,6 +3,7 @@ package club.simplebudget.budgetapp.models;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -18,6 +19,8 @@ public class User {
     private String password;
     @Column
     private String phonenumber;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<Comment> comments;
 
     public User() {
     }
@@ -27,22 +30,24 @@ public class User {
         username = copy.username;
         password = copy.password;
         phonenumber = copy.phonenumber;
+        comments = copy.comments;
     }
 
-    public User(String username, String email, String password, String phonenumber) {
+    public User(String username, String email, String password, String phonenumber, List<Comment> comments) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.phonenumber = phonenumber;
+        this.comments = comments;
     }
 
-
-    public User(long id, String username, String email, String password, String phonenumber) {
+    public User(long id, String username, String email, String password, String phonenumber, List<Comment> comments) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.phonenumber = phonenumber;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -83,5 +88,13 @@ public class User {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

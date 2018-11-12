@@ -1,5 +1,6 @@
 package club.simplebudget.budgetapp.models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -11,27 +12,27 @@ public class Account {
     private long income;
     @Column(nullable = false)
     private long savings;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private User user;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Bill bill;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
+    private List<Bill> bills;
 
     public Account() {
     }
 
-    public Account(long id, long income, long savings, User user, Bill bill) {
+    public Account(long id, long income, long savings, User user, List<Bill> bills) {
         this.id = id;
         this.income = income;
         this.savings = savings;
         this.user = user;
-        this.bill = bill;
+        this.bills = bills;
     }
 
-    public Account(long income, long savings, User user, Bill bill) {
+    public Account(long income, long savings, User user, List<Bill> bills) {
         this.income = income;
         this.savings = savings;
         this.user = user;
-        this.bill = bill;
+        this.bills = bills;
     }
 
     public long getId() {
@@ -66,11 +67,11 @@ public class Account {
         this.user = user;
     }
 
-    public Bill getBill() {
-        return bill;
+    public List<Bill> getBills() {
+        return bills;
     }
 
-    public void setBill(Bill bill) {
-        this.bill = bill;
+    public void setBills(List<Bill> bills) {
+        this.bills = bills;
     }
 }
