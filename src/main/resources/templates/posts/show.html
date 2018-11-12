@@ -33,6 +33,16 @@
     <div class="card-body">
         <p class="card-text" th:text="${comment.commentbody}"></p>
     </div>
+    <button th:if="${comment != null}" class="showReply">Reply</button>
+    <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
+        <div class='form-group'>
+            <div class='form-group'>
+                <label for='reply'>reply:</label>
+                <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply"></textarea>
+                <br/>
+            </div>
+            <input type='submit'/> </div>
+    </form>
 </div>
 
 
@@ -43,6 +53,15 @@
             e.preventDefault();
             commentForm.style.display = "block";
             button.style.display = "none";
+        });
+        let showreply = Array.from(document.getElementsByClassName("showReply"));
+        let replyForm = Array.from(document.getElementsByClassName("replyForm"));
+        showreply.forEach((element, index)=>{
+            element.addEventListener("click", (e) => {
+                e.preventDefault();
+                button.style.display = "none";
+                replyForm[index].style.display = "block";
+            });
         });
 </script>
 

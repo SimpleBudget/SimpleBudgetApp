@@ -23,14 +23,24 @@ public class CommentController {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             Comment newComment = new Comment();
         Post thePost = postRepository.findOne(id);
-//        System.out.println(thePost);
-//        newComment.addPost(thePost);
         newComment.setCommentbody(commentbody);
         newComment.setUser(loggedInUser);
         commentRepository.save(newComment);
         thePost.addComment(newComment);
         postRepository.save(thePost);
         return "redirect:/posts/" + id;
+
+    }
+    @PostMapping("/reply/{id}")
+    public String reply(@PathVariable long id, @RequestParam String commentreply){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Comment theComment = commentRepository.findOne(id);
+        Comment reply = new Comment();
+        reply.setCommentbody(commentreply);
+        reply.setUser(loggedInUser);
+        reply.setCommentId(theComment);
+        commentRepository.save(reply);
+        return "redirect:/posts/" + theComment.getPosts().get(0).getId();
 
     }
 }
