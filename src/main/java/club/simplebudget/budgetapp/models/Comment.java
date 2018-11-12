@@ -1,5 +1,7 @@
 package club.simplebudget.budgetapp.models;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "comments")
@@ -11,9 +13,8 @@ public class Comment {
     private String commentbody;
     @Column
     private long rating;
-    @ManyToOne(cascade =  CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
-    private Post post;
+    @ManyToMany(mappedBy = "comments")
+    private List<Post> posts;
     @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
@@ -23,19 +24,19 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(long id, String comment, long rating, Post post, User user, Comment commentId) {
+    public Comment(long id, String comment, long rating, ArrayList<Post> posts, User user, Comment commentId) {
         this.id = id;
         this.commentbody = comment;
         this.rating = rating;
-        this.post = post;
+        this.posts = posts;
         this.user = user;
         this.commentId = commentId;
     }
 
-    public Comment(String comment, long rating, Post post, User user, Comment commentId) {
-        this.commentbody = comment;
+    public Comment(String commentbody, long rating, ArrayList<Post> posts, User user, Comment commentId) {
+        this.commentbody = commentbody;
         this.rating = rating;
-        this.post = post;
+        this.posts = posts;
         this.user = user;
         this.commentId = commentId;
     }
@@ -64,12 +65,15 @@ public class Comment {
         this.rating = rating;
     }
 
-    public Post getPost() {
-        return post;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+    public void addPost(Post post){
+        posts.add(post);
     }
 
     public User getUser() {

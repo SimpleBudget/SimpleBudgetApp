@@ -28,7 +28,7 @@
 <button id="show">Comment</button>
 <div class="card" th:each="comment : ${Post.comments}">
     <div class="card-header">
-        <span th:text="'Posted By: ' + ${Post.user.username}"></span>
+        <span th:text="'Posted By: ' + ${comment.user.username}"></span>
     </div>
     <div class="card-body">
         <p class="card-text" th:text="${comment.commentbody}"></p>

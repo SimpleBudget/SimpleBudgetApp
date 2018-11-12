@@ -16,7 +16,8 @@ public class Post {
     private String body;
     @OneToOne
     private User user;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(name = "post_comments", joinColumns={@JoinColumn(name="post_id")}, inverseJoinColumns = {@JoinColumn(name="comment_id")})
     private List<Comment> comments;
     public Post(){
     }

@@ -23,9 +23,10 @@ public class CommentController {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             Comment newComment = new Comment();
         Post thePost = postRepository.findOne(id);
-        newComment.setUser(loggedInUser);
-        newComment.setPost(thePost);
+//        System.out.println(thePost);
+//        newComment.addPost(thePost);
         newComment.setCommentbody(commentbody);
+        newComment.setUser(loggedInUser);
         commentRepository.save(newComment);
         thePost.addComment(newComment);
         postRepository.save(thePost);
