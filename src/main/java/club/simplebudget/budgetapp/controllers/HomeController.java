@@ -23,8 +23,4 @@ public class HomeController {
     public String supPage(){
         return "supincome";
     }
-    @GetMapping("/reviews")
-    public String reviews(){
-        return "reviews";
-    }
 }

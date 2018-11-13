@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Edit a review')">
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"/>
+<form th:object="${review}" th:action="@{'/reviews/' + ${review.id} + '/edit'}" th:method="post">
+    <div class="slidecontainer">
+        <label for="rating">Rating</label>
+        <input type="range" min="1" max="5"  value ="1"  class = "slider" id="rating" th:field="*{rating}"/>
+        <span>Rating:</span>
+        <span id="f"></span>
+        <script>
+            var slideCol = document.getElementById("rating");
+            var y = document.getElementById("f");
+            y.innerHTML=slideCol.value;
+
+            slideCol.oninput=function(){
+                y.innerHTML=this.value;
+            }
+        </script>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea class="form-control" rows="8" cols="100" id="body" th:field="*{body}"/>
+    </div>
+    <input type="submit"/><br/><br/><input type="submit" value="Delete"  th:formaction="@{'/reviews/' + ${review.id} + '/delete'}" th:formmethod="post"/>
+</form>
+<footer th:replace="partials :: footer"/>
+</body>
+</html>
