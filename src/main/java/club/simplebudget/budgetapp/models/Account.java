@@ -12,7 +12,7 @@ public class Account {
     private long income;
     @Column(nullable = false)
     private long savings;
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade=CascadeType.MERGE)
     private User user;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
     private List<Bill> bills;
