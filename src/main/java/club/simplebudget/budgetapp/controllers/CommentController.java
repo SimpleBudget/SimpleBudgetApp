@@ -44,27 +44,36 @@ public class CommentController {
     }
     @PostMapping("/comment/{id}/delete")
     public String deleteComment(@ModelAttribute Post post, @PathVariable long id){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment theComment = commentRepository.findOne(id);
+        if(loggedInUser.getId() == theComment.getUser().getId()) {
         commentRepository.delete(theComment);
         return "redirect:/posts";
+        } else {
+            return "redirect:/";
+        }
 
     }
     @PostMapping("/comment/{id}/edit")
     public String editComment(@ModelAttribute Post post, @PathVariable long id, @RequestParam String commentedit){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment theComment = commentRepository.findOne(id);
-        if(theComment.getCommentId() == null){
-            theComment.setUser(loggedInUser);
-            theComment.setCommentbody(commentedit);
-            theComment.setPost(theComment.getPost());
-            commentRepository.save(theComment);
-            return "redirect:/posts/"+ theComment.getPost().getId();
+        if(loggedInUser.getId() == theComment.getUser().getId()) {
+            if (theComment.getCommentId() == null) {
+                theComment.setUser(loggedInUser);
+                theComment.setCommentbody(commentedit);
+                theComment.setPost(theComment.getPost());
+                commentRepository.save(theComment);
+                return "redirect:/posts/" + theComment.getPost().getId();
+            } else {
+                theComment.setUser(loggedInUser);
+                theComment.setCommentbody(commentedit);
+                theComment.setCommentId(theComment.getCommentId());
+                commentRepository.save(theComment);
+                return "redirect:/posts";
+            }
         } else {
-            theComment.setUser(loggedInUser);
-            theComment.setCommentbody(commentedit);
-            theComment.setCommentId(theComment.getCommentId());
-            commentRepository.save(theComment);
-            return "redirect:/posts";
+            return "redirect:/";
         }
     }
 
