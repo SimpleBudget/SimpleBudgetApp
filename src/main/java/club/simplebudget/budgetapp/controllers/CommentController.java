@@ -42,4 +42,30 @@ public class CommentController {
         return "redirect:/posts/" + theComment.getPost().getId();
 
     }
+    @PostMapping("/comment/{id}/delete")
+    public String deleteComment(@ModelAttribute Post post, @PathVariable long id){
+        Comment theComment = commentRepository.findOne(id);
+        commentRepository.delete(theComment);
+        return "redirect:/posts";
+
+    }
+    @PostMapping("/comment/{id}/edit")
+    public String editComment(@ModelAttribute Post post, @PathVariable long id, @RequestParam String commentedit){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Comment theComment = commentRepository.findOne(id);
+        if(theComment.getCommentId() == null){
+            theComment.setUser(loggedInUser);
+            theComment.setCommentbody(commentedit);
+            theComment.setPost(theComment.getPost());
+            commentRepository.save(theComment);
+            return "redirect:/posts/"+ theComment.getPost().getId();
+        } else {
+            theComment.setUser(loggedInUser);
+            theComment.setCommentbody(commentedit);
+            theComment.setCommentId(theComment.getCommentId());
+            commentRepository.save(theComment);
+            return "redirect:/posts";
+        }
+    }
+
 }

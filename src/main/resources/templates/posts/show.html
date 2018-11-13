@@ -35,7 +35,19 @@
             <div class="card-body">
                 <p class="card-text" th:text="${comment.commentbody}"></p>
             </div>
-            <button th:if="${comment != null}" class="showReply">Reply</button>
+            <button th:if="${comment != null}" class="showReply">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
+            <form  style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
+                <div class='form-group'>
+                    <div class='form-group'>
+                        <label for='edit'>edit:</label>
+                        <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}"></textarea>
+                        <br/>
+                    </div>
+                    <input type='submit'/> <br/> <input type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+
+                </div>
+
+            </form>
             <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
                 <div class='form-group'>
                     <div class='form-group'>
@@ -43,7 +55,10 @@
                         <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply"></textarea>
                         <br/>
                     </div>
-                    <input type='submit'/> </div>
+                    <input type='submit'/>
+
+                </div>
+
             </form>
             <ul>
                 <li th:each="comment : ${comment.comments}">
@@ -55,6 +70,19 @@
                             <p class="card-text" th:text="${comment.commentbody}"></p>
                         </div>
                     </div>
+                    <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
+                    <form  style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
+                        <div class='form-group'>
+                            <div class='form-group'>
+                                <label for='edit'>edit:</label>
+                                <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}"></textarea>
+                                <br/>
+                            </div>
+                            <input type='submit'/> <br/> <input type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+
+                        </div>
+
+                    </form>
                 </li>
             </ul>
         </div>
@@ -71,14 +99,25 @@
             commentForm.style.display = "block";
             button.style.display = "none";
         });
+        let editForm = Array.from(document.getElementsByClassName("editForm"));
+        let editComment = Array.from(document.getElementsByClassName("editComment"));
         let showreply = Array.from(document.getElementsByClassName("showReply"));
         let replyForm = Array.from(document.getElementsByClassName("replyForm"));
+
+
         showreply.forEach((element, index)=>{
             element.addEventListener("click", (e) => {
                 e.preventDefault();
                 button.style.display = "none";
                 replyForm[index].style.display = "block";
             });
+        });
+        editComment.forEach((element, index) =>{
+            element.addEventListener("click", (e) =>{
+                e.preventDefault();
+                editForm[index].style.display = "block";
+            });
+
         });
 </script>
 
