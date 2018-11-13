@@ -5,6 +5,7 @@ import club.simplebudget.budgetapp.models.Account;
 import club.simplebudget.budgetapp.models.Bill;
 import club.simplebudget.budgetapp.models.User;
 import club.simplebudget.budgetapp.repositories.AccountRepository;
+import club.simplebudget.budgetapp.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private BillRepository billRepository;
+
     @GetMapping("/account-setup")
     public String accountsetup(Model model, Model model1){
         model.addAttribute("account", new Account());
@@ -31,8 +35,9 @@ public class AccountController {
 
     @PostMapping("/account-setup")
     public String makeaccount(@ModelAttribute Account account, @ModelAttribute Bill bill,  @RequestParam(required = false) String monthlyincome,
-                              @RequestParam(required = false) String exampleRadios1, @RequestParam(required = false) String exampleRadios2, @RequestParam(required = false) String
-                              exampleRadios3, @RequestParam(required = false) Double bills, @RequestParam(required = false) Long savingsoverall, @RequestParam(required = false) Long savings, Model model) {
+                              @RequestParam(required = false) String exampleRadios1, @RequestParam(required = false) String billname,
+                              @RequestParam(required = false) Double billamount, @RequestParam(required = false) Long savingsoverall,
+                              @RequestParam(required = false) Long savings, Model model) {
        Long monthlyincomelong = Long.parseLong(monthlyincome);
         User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -44,6 +49,11 @@ public class AccountController {
             account.setUser(loggedInUser);
             account.setSavings(savingsoverall);
             accountRepository.save(account);
+            bill.setName(billname);
+            bill.setAmount(billamount);
+            bill.setAccount(account);
+            bill.setUser(loggedInUser);
+            billRepository.save(bill);
 
 
             return "redirect:/profile";
@@ -54,6 +64,12 @@ public class AccountController {
             account.setUser(loggedInUser);
             account.setSavings(savingsoverall);
             accountRepository.save(account);
+            bill.setName(billname);
+            bill.setAmount(billamount);
+            bill.setAccount(account);
+            bill.setUser(loggedInUser);
+            billRepository.save(bill);
+
             return "redirect:/profile";
         } else  {
             model.addAttribute("monthlyincomelong", monthlyincomelong);
@@ -61,6 +77,12 @@ public class AccountController {
             account.setUser(loggedInUser);
             account.setSavings(savingsoverall);
             accountRepository.save(account);
+            bill.setName(billname);
+            bill.setAmount(billamount);
+            bill.setAccount(account);
+            bill.setUser(loggedInUser);
+            billRepository.save(bill);
+
             return "redirect:/profile";
         }
 
