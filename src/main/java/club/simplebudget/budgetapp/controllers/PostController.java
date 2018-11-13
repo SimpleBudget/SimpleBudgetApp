@@ -31,7 +31,11 @@ public class PostController {
     }
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable long id, Model model){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("Post",postRepository.findOne(id));
+        if(loggedInUser != null){
+            model.addAttribute("loggedInUser",loggedInUser);
+        }
         return "posts/show";
     }
     @GetMapping("/posts/create")
@@ -62,8 +66,10 @@ public class PostController {
     @PostMapping("/posts/{id}/edit")
     public String submitEdit(@ModelAttribute Post post, @PathVariable long id) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post thePost = postRepository.findOne(id);
         if (postRepository.findOne(id).getUser().getId() == loggedInUser.getId()) {
             post.setUser(userRepository.findByUsername(loggedInUser.getUsername()));
+            post.setComments(thePost.getComments());
             postRepository.save(post);
             return "redirect:/posts";
         } else {
