@@ -11,7 +11,7 @@ public class Bill {
     private String name;
     @Column(nullable = false)
     private Double amount;
-    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     private User user;
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -21,17 +21,19 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(long id, String name, Double amount, User user) {
+    public Bill(long id, String name, Double amount, User user, Account account) {
         this.id = id;
         this.name = name;
         this.amount = amount;
         this.user = user;
+        this.account = account;
     }
 
-    public Bill(String name, Double amount, User user) {
+    public Bill(String name, Double amount, User user, Account account) {
         this.name = name;
         this.amount = amount;
         this.user = user;
+        this.account = account;
     }
 
     public long getId() {
@@ -64,5 +66,13 @@ public class Bill {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

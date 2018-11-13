@@ -8,10 +8,10 @@
 <nav th:replace="partials :: navbar"/>
 <h1>Setup your Finacnial Account</h1>
 <h2>Budget Yourself!</h2>
-<form th:action="@{/account-setup}" method="POST" th:object="${account}" >
+<form th:action="@{/account-setup}" method="POST">
     <div class="form-group">
         <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
-        <input class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"   th:required="required"/>
+        <input class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"/>
         <ul class="list-group list-group-flush">
             <li class="list-group-item cuscolor"><div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="option1"/>
@@ -40,18 +40,20 @@
     </div>
     <div class="form-group">
         <label for="savings">How much would you like to save every month?</label>
-        <input class="form-control" id="savings" type="number" th:field="${bill.amount}" th:required="required"/>
+        <input class="form-control" id="savings" name="savings" type="number"/>
     </div>
 
-
+    <div class="form-group">
+        <h3 for="billname">Enter your bills here.. </h3>
+        <label for="billname">Enter the bill name here</label>
+        <input class="form-control" id="billname" name="billname"/>
+        <label for="billamount">Enter the bill amount here</label>
+        <input class="form-control" id="billamount" name="billamount"/>
+        <button type="submit">Add a bill</button>
+    </div>
     <input value="Calculate my Budget!!" type="submit" />
 </form>
-    <form method="POST" th:object="${bill}">
-    <div class="form-group">
-        <label for="bills">Enter your bills here.. </label>
-        <input class="form-control" id="bills" th:field="${bill.amount}" th:required="required" />
-    </div>
-    </form>
+
 <footer th:replace="partials :: footer"/>
 </body>
 </html>
