@@ -11,8 +11,9 @@
         <a class="nav-item nav-link active" href="/">Home</a>
         <a class="nav-item nav-link active" href="/posts">Community</a>
         <a class="nav-item nav-link active" href="/posts/create">Create Post</a>
-
         <a class="nav-item nav-link "  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
+        <a class="nav-item nav-link active" href="/reviews/create">Leave a Review</a>
+
 
         <form th:action="@{/logout}" th:method="POST">
             <button id="logoutBtn" type="submit" class="nav-item nav-link navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -40,6 +41,9 @@
             <a class="link-custom" th:href="'/about-team'">The Team</a>
             <span>|</span>
             <a class="link-custom" th:href="'/supincome'">Supplemental Income</a>
+            <span>|</span>
+            <a class="link-custom" th:href="'/reviews'">Our Reviews</a>
+
         </div>
         <div class="col-12 footer-bottom text-center white">
             <em>SimpleBudget Copyright &copy; 2018</em>
