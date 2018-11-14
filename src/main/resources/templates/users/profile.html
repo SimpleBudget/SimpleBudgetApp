@@ -11,15 +11,21 @@
 <h2 th:text="${user.phonenumber}"></h2>
 
 
-<h3>Your monthly income</h3>
-<p th:text="${account.getIncome()}"></p>
+<h3 th:if="${account != null}">Your monthly income</h3>
+<p th:if="${account != null}" th:text="${account.getIncome()}"></p>
 
-<h3>Your bills</h3>
-<div th:each="bill : ${account.bills}">
+<h3 th:if="${bills.size() >= 1}">Your bills</h3>
+<div th:each="bill : ${bills}">
     <h4 th:text="${bill.name}"></h4>
     <p th:text="${bill.amount}"></p>
     <hr />
 </div>
+<h3 th:if="${billTotal > 0}">Total of your Bills</h3>
+<p th:if="${billTotal > 0}" th:text="${billTotal}"></p>
+<h3 th:if="${billTotal > 0}">Money left over after your bills</h3>
+<p th:if="${billTotal > 0}" th:text="${moneyAfterBills}"></p>
+<a href="/account-setup"><button th:if="${account == null}">setup your account!</button></a>
+<a href="/account-setup"><button th:if="${account != null}">edit your account!</button></a>
 
 
 

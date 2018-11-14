@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface BillRepository extends CrudRepository<Bill, Long> {
     List<Bill> findAllByUser_Id(long user_id);
+
 }
