@@ -11,13 +11,13 @@
         <a class="nav-item nav-link active" href="/">Home</a>
         <a class="nav-item nav-link active" href="/posts">Community</a>
         <a class="nav-item nav-link active" href="/posts/create">Create Post</a>
-
-        <a class="nav-item nav-link "  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
-
+        <a class="nav-item nav-link active" href="/account-setup">Set Up Account</a>
+        <a class="nav-item nav-link active"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
+        <a class="nav-item nav-link active" href="/profile">Your Profile</a>
+        <a class="nav-item nav-link active" href="/reviews/create">Leave a Review</a>
         <form th:action="@{/logout}" th:method="POST">
             <button id="logoutBtn" type="submit" class="nav-item nav-link navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
-
     </div>
     <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
         <a class="nav-item nav-link active" href="/">Home</a>
@@ -25,6 +25,11 @@
         <a th:href="'/sign-up'" class="nav-item nav-link ">Sign Up!</a>
         <a th:href="'/login'" class="nav-item nav-link ">Login</a>
     </div>
+    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET">
+        <input class="search-custom" type="search" name="search"/>
+        <input class="search-custom" type="submit" value="Search Posts!"/>
+    </form>
+    </li>
 </nav>
 <footer th:fragment="footer" style="position:relative;
    bottom:0;
@@ -40,6 +45,9 @@
             <a class="link-custom" th:href="'/about-team'">The Team</a>
             <span>|</span>
             <a class="link-custom" th:href="'/supincome'">Supplemental Income</a>
+            <span>|</span>
+            <a class="link-custom" th:href="'/reviews'">Our Reviews</a>
+
         </div>
         <div class="col-12 footer-bottom text-center white">
             <em>SimpleBudget Copyright &copy; 2018</em>

@@ -16,8 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sun.tools.doclint.Entity.sum;
-
 @Controller
 public class AccountController {
 
