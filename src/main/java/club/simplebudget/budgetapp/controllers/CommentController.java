@@ -48,7 +48,7 @@ public class CommentController {
         Comment theComment = commentRepository.findOne(id);
         if(loggedInUser.getId() == theComment.getUser().getId()) {
         commentRepository.delete(theComment);
-        return "redirect:/posts";
+        return "redirect:/posts/" + (theComment.getPost() != null ? theComment.getPost().getId() : theComment.getCommentId().getPost().getId());
         } else {
             return "redirect:/";
         }
@@ -70,7 +70,7 @@ public class CommentController {
                 theComment.setCommentbody(commentedit);
                 theComment.setCommentId(theComment.getCommentId());
                 commentRepository.save(theComment);
-                return "redirect:/posts";
+                return "redirect:/posts/" + theComment.getCommentId().getPost().getId();
             }
         } else {
             return "redirect:/";
