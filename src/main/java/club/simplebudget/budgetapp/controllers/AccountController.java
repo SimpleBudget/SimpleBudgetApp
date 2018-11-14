@@ -71,6 +71,7 @@ public class AccountController {
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
             userAccount.setBills(userBills);
+            userAccount.setOption(1);
             accountRepository.save(userAccount);
             return "redirect:/profile";
         } else if (exampleRadios1.equals("option2")) {
@@ -80,6 +81,7 @@ public class AccountController {
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
             userAccount.setBills(userBills);
+            userAccount.setOption(2);
             accountRepository.save(userAccount);
             return "redirect:/profile";
         } else  {
@@ -88,6 +90,7 @@ public class AccountController {
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
             userAccount.setBills(userBills);
+            userAccount.setOption(3);
             accountRepository.save(userAccount);
             return "redirect:/profile";
         }
