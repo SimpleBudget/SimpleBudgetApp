@@ -57,13 +57,13 @@
         let spendAmount = document.getElementById("spendAmount");
         option1.addEventListener("change", ()=>{
             if(option1.checked){
-                let amount = moneyAfterBillsNumber/7;
+                let amount = (moneyAfterBillsNumber/4)/7;
                 spendAmount.innerText = "You can spend " + amount.toFixed(2) + " per day.";
             }
         });
         option2.addEventListener("change", ()=>{
             if(option2.checked){
-                let amount = moneyAfterBillsNumber/14;
+                let amount = (moneyAfterBillsNumber/2)/14;
                 spendAmount.innerText = "You can spend " + amount.toFixed(2) + " per day.";
             }
         });
