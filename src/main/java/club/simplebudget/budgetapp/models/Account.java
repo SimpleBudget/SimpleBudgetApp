@@ -12,6 +12,8 @@ public class Account {
     private Double income;
     @Column(nullable = false)
     private Double savings;
+    @Column(nullable = false, name = "choice")
+    private long option;
     @OneToOne
     private User user;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
@@ -20,17 +22,19 @@ public class Account {
     public Account() {
     }
 
-    public Account(long id, Double income, Double savings, User user, List<Bill> bills) {
+    public Account(long id, Double income, Double savings, User user, List<Bill> bills, long option) {
         this.id = id;
         this.income = income;
         this.savings = savings;
         this.user = user;
         this.bills = bills;
+        this.option = option;
     }
 
-    public Account(Double income, Double savings, User user, List<Bill> bills) {
+    public Account(Double income, Double savings, long option, User user, List<Bill> bills) {
         this.income = income;
         this.savings = savings;
+        this.option = option;
         this.user = user;
         this.bills = bills;
     }
@@ -57,6 +61,14 @@ public class Account {
 
     public void setSavings(Double savings) {
         this.savings = savings;
+    }
+
+    public long getOption() {
+        return option;
+    }
+
+    public void setOption(long option) {
+        this.option = option;
     }
 
     public User getUser() {
