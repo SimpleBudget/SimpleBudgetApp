@@ -7,18 +7,22 @@
   * Purpose:
     - Ability to send out email blasts to users that want to recive notification from there post that have signed up for an notificiation
     - https://www.twilio.com/docs/
+#### Google Charts
+   * Purpose:
+   - Ability to user pie charts to display a more visual appealing budget model  
+   - https://developers.google.com/chart/
     
 #### General
 * Home Page
-    - [] `SignUp` Button
-    - [] `Login` Button
-    - [] `About SB` button to about us page
-    - [] `Community/Post` to the community page
-    - [] 3 most recent reiviews
+    - [x] `SignUp` Button
+    - [x] `Login` Button
+    - [x] `About SB` button to about us page
+    - [x] `Community/Post` to the community page
+    - [] 3 most recent reviews
     
     * _From the `SignUp` button..._
-      - [] Fields for Username, Password, Email, phone, and...
-      - [] Checks for existing usernames/emails to avoid duplication
+      - [x] Fields for Username, Password, Email, phone, and...
+      - [x] Checks for existing usernames/emails to avoid duplication
       
 ###### The experience now branches off into two directions, depending on what the user is wanting, to use the budget app or go to the community
 ### Budget App
@@ -27,28 +31,36 @@
     - [] Supplemental income
     - [] My Post
     * Login
-      - [] `Username` and `Password`
-      - [] Verifies username exists
-      - [] Verifies password matches
-      - [] Forwards to `Profile`  
+      - [x] `Username` and `Password`
+      - [x] Verifies username exists
+      - [x] Verifies password matches
+      - [x] Forwards to `Profile`  
         *  Profile
-          - [] Information about the user (username, email, phonenumber, post)
+          - [x] Information about the user (username, email, phonenumber, post)
           - [] Stats about post/commments
           - [] `Notification` option, to notifiy of a reply to a thread
          * Dashboard
-             - [] ~Ability to  edit current profile information~
-             - [] Can see their own stats about post
-             - [] ~Can see most recent post
+             - [x] ~Ability to  edit current profile information
+             - [] ~Can see their own stats about post~
+             - [] ~Can see most recent post~
              - [] Can update there budget savings/income informatrion
 #### Community
   * Post
-    -[] Be able to post to community
-    -[] No one can hijack or edit others post or comments
-    - [] Be able to reply to comments
-    - [] Be able to upvote/downvote a comment
+    -[x] Be able to post to community
+    -[x] No one can hijack or edit others post or comments
+    - [x] Be able to reply to comments
+    - [] ~Be able to upvote/downvote a comment~
     -[] Be able to receive notification from selected thread
+#### Reviews
+ * Reviews
+ -[x] Be able to post a review and view review
+ -[x] Be able to update/edit a review
+ -[] limit 1 review per user
+ 
+ 
        
  ## Special
  #### ~Admin~ #
            * Registration 
-           Be able to log in and moderate post/community.   
+           Be able to log in and moderate post/community. 
+           Work on API's implementation 
