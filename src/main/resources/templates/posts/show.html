@@ -25,7 +25,7 @@
             <br/>
             </div>
        <input type='submit'/> </div> </form>
-<button id="show">Comment</button>
+<button sec:authorize='isAuthenticated()' id="show">Comment</button>
 <ul>
     <li th:each="comment : ${Post.comments}">
         <div class="card">
@@ -35,8 +35,8 @@
             <div class="card-body">
                 <p class="card-text" th:text="${comment.commentbody}"></p>
             </div>
-            <button th:if="${comment != null}" class="showReply">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
-            <form  style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
+            <button th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
+            <form th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
                 <div class='form-group'>
                     <div class='form-group'>
                         <label for='edit'>edit:</label>
@@ -70,8 +70,8 @@
                             <p class="card-text" th:text="${comment.commentbody}"></p>
                         </div>
                     </div>
-                    <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
-                    <form  style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
+                    <button th:if="${loggedInUser.id == comment.user.id}" class="editReply">Edit</button>
+                    <form  th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editReplyForm">
                         <div class='form-group'>
                             <div class='form-group'>
                                 <label for='edit'>edit:</label>
@@ -103,6 +103,8 @@
         let editComment = Array.from(document.getElementsByClassName("editComment"));
         let showreply = Array.from(document.getElementsByClassName("showReply"));
         let replyForm = Array.from(document.getElementsByClassName("replyForm"));
+        let editReplyForm = Array.from(document.getElementsByClassName("editReplyForm"));
+        let editReply = Array.from(document.getElementsByClassName("editReply"));
 
 
         showreply.forEach((element, index)=>{
@@ -119,6 +121,14 @@
             });
 
         });
+        editReply.forEach((element, index) =>{
+            element.addEventListener("click", (e) =>{
+                e.preventDefault();
+                editReplyForm[index].style.display = "block";
+            });
+
+        });
+
 </script>
 
 <footer th:replace="partials :: footer"></footer>

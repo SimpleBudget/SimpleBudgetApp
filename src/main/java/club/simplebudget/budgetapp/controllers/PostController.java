@@ -31,12 +31,20 @@ public class PostController {
     }
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable long id, Model model){
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("Post",postRepository.findOne(id));
-        if(loggedInUser != null){
-            model.addAttribute("loggedInUser",loggedInUser);
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("Post", postRepository.findOne(id));
+            if (loggedInUser != null) {
+                model.addAttribute("loggedInUser", loggedInUser);
+            }
+            return "posts/show";
+        } else {
+            model.addAttribute("Post", postRepository.findOne(id));
+            User anon = new User();
+            anon.setId(0);
+            model.addAttribute("loggedInUser", anon);
+            return "posts/show";
         }
-        return "posts/show";
     }
     @GetMapping("/posts/create")
     public String createPostIndex(Model model){
