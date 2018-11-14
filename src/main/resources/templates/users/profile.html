@@ -11,18 +11,70 @@
 <h2 th:text="${user.phonenumber}"></h2>
 
 
-<h3>Your monthly income</h3>
-<!--<p th:text="${account.getIncome()}"></p>-->
 
-<h3>Your bills</h3>
-<!--<div th:each="bill : ${account.bills}">-->
-    <!--<h4 th:text="${bill.name}"></h4>-->
-    <!--<p th:text="${bill.amount}"></p>-->
-    <!--<hr />-->
-<!--</div>-->
+<h3 th:if="${account != null}">Your monthly income</h3>
+<p th:if="${account != null}" th:text="${account.getIncome()}"></p>
 
-
-
+<h3 th:if="${bills.size() >= 1}">Your bills</h3>
+<div th:each="bill : ${bills}">
+    <h4 th:text="${bill.name}"></h4>
+    <p th:text="${bill.amount}"></p>
+    <hr />
+</div>
+<h3 th:if="${billTotal > 0}">Total of your Bills</h3>
+<p th:if="${billTotal > 0}" th:text="${billTotal}"></p>
+<h3 th:if="${billTotal > 0}">Money left over after your bills</h3>
+<p th:if="${billTotal > 0}" id="moneyAfterBills" th:text="${moneyAfterBills}"></p>
+<a href="/account-setup"><button th:if="${account == null}">setup your account!</button></a>
+<a href="/account-setup"><button th:if="${account != null}">edit your account!</button></a>
+<h3 th:if="${billTotal > 0}">Calculate what you can spend per day after bills!</h3>
+<ul th:if="${billTotal > 0}" class="list-group list-group-flush">
+    <li class="list-group-item cuscolor"><div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="option1"/>
+        <label class="form-check-label" for="exampleRadios1">
+            Weekly
+        </label>
+    </div></li>
+    <li class="list-group-item cuscolor"><div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="option2"/>
+        <label class="form-check-label" for="exampleRadios2">
+            Bi-weekly
+        </label>
+    </div></li>
+    <li class="list-group-item cuscolor"><div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios3" value="option3"/>
+        <label class="form-check-label" for="exampleRadios3">
+            Monthly
+        </label>
+    </div></li>
+</ul>
+<h4 id="spendAmount"></h4>
+    <script>
+        let moneyAfterBills = document.getElementById("moneyAfterBills");
+        let moneyAfterBillsNumber = Number(moneyAfterBills.innerText);
+        let option1 = document.getElementById("exampleRadios1");
+        let option2 = document.getElementById("exampleRadios2");
+        let option3 = document.getElementById("exampleRadios3");
+        let spendAmount = document.getElementById("spendAmount");
+        option1.addEventListener("change", ()=>{
+            if(option1.checked){
+                let amount = (moneyAfterBillsNumber/4)/7;
+                spendAmount.innerText = "You can spend " + amount.toFixed(2) + " per day.";
+            }
+        });
+        option2.addEventListener("change", ()=>{
+            if(option2.checked){
+                let amount = (moneyAfterBillsNumber/2)/14;
+                spendAmount.innerText = "You can spend " + amount.toFixed(2) + " per day.";
+            }
+        });
+        option3.addEventListener("change", ()=>{
+            if(option3.checked){
+                let amount = moneyAfterBillsNumber/28;
+                spendAmount.innerText = "You can spend " + amount.toFixed(2) + " per day.";
+            }
+        });
+    </script>
 </body>
 <footer th:replace="partials :: footer"/>
 
