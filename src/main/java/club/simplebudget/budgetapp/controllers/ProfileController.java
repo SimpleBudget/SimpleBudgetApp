@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,15 +25,14 @@ public class ProfileController {
     @Autowired
     private BillRepository billRepository;
 
-
     @GetMapping("/profile")
     public String ProfileController(Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userRepository.findByUsername(loggedInUser.getUsername());
-        Account userAccount = accountRepository.findAccountByUser_Id(currentUser.getId());
+
+        Account userAccount = accountRepository.findAccountByUser_Id(loggedInUser.getId());
         double billTotal = 0;
         model.addAttribute("user", userRepository.findOne(loggedInUser.getId()));
-        model.addAttribute("account", accountRepository.findAccountByUser_Id(currentUser.getId()));
+        model.addAttribute("account", accountRepository.findAccountByUser_Id(loggedInUser.getId()));
         List<Bill> allUserBills = billRepository.findAllByUser_Id(loggedInUser.getId());
         if (allUserBills != null) {
             model.addAttribute("bills", allUserBills);
