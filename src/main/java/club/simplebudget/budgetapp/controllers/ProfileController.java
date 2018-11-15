@@ -29,7 +29,6 @@ public class ProfileController {
     public String ProfileController(Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Account userAccount = accountRepository.findAccountByUser_Id(loggedInUser.getId());
-        double billTotal = 0;
         model.addAttribute("user", userRepository.findOne(loggedInUser.getId()));
         model.addAttribute("account", accountRepository.findAccountByUser_Id(loggedInUser.getId()));
         List<Bill> allUserBills = billRepository.findAllByUser_Id(loggedInUser.getId());
