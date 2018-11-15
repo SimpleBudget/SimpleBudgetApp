@@ -30,13 +30,10 @@ public class AccountController {
         User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        System.out.println("LOOK HERE");
 //        System.out.println(accountRepository.findAccountByUser_Id(loggedInUser.getId()));
-//        if(accountRepository.findAccountByUser_Id(loggedInUser.getId()) == null) {
-//            model.addAttribute("account", new Account());
-//        } else {
-//            Account userAccount = accountRepository.findAccountByUser_Id(loggedInUser.getId());
-//            model.addAttribute("account", userAccount);
-//            System.out.println("LOOK AT THIS ACCOUNT " + userAccount);
-//        }
+        if(accountRepository.findAccountByUser_Id(loggedInUser.getId()) != null) {
+            Account userAccount = accountRepository.findAccountByUser_Id(loggedInUser.getId());
+            model.addAttribute("account", userAccount);
+        }
         model.addAttribute("bill", new Bill());
         List<Bill> allUserBills =  billRepository.findAllByUser_Id(loggedInUser.getId());
         if(billRepository.findAllByUser_Id(loggedInUser.getId()) != null) {
@@ -53,10 +50,12 @@ public class AccountController {
     @PostMapping("/account-setup")
     public String makeaccount(@ModelAttribute Bill bill,
                               @RequestParam(required = false) String monthlyincome,
-                              @RequestParam(required = false) String exampleRadios1, @RequestParam(required = false) String billname,
-                              @RequestParam(required = false) Double billamount, @RequestParam(required = false) Double savingsoverall,
-                              @RequestParam(required = false) String savings, Model model) {
-       Double monthlyincomeDouble = Double.parseDouble(monthlyincome);
+                              @RequestParam(required = false) String exampleRadios1,
+                              @RequestParam(required = false) Double savingsoverall,Model model) {
+        Double monthlyincomeDouble = 0.00;
+        if(monthlyincome != null && !monthlyincome.equals("")) {
+             monthlyincomeDouble = Double.parseDouble(monthlyincome);
+        }
         User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Bill> userBills = billRepository.findAllByUser_Id(loggedInUser.getId());
         Account userAccount = accountRepository.findAccountByUser_Id(loggedInUser.getId());
@@ -66,7 +65,7 @@ public class AccountController {
 
         if (exampleRadios1.equals("option1")) {
             Double sum = monthlyincomeDouble * 4;
-            model.addAttribute("sum", sum);
+//            model.addAttribute("sum", sum);
             userAccount.setIncome(sum);
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
@@ -76,7 +75,7 @@ public class AccountController {
             return "redirect:/profile";
         } else if (exampleRadios1.equals("option2")) {
             Double sum1 = monthlyincomeDouble * 2;
-            model.addAttribute("sum1", sum1);
+//            model.addAttribute("sum1", sum1);
             userAccount.setIncome(sum1);
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
@@ -85,7 +84,7 @@ public class AccountController {
             accountRepository.save(userAccount);
             return "redirect:/profile";
         } else  {
-            model.addAttribute("monthlyincomelong", monthlyincomeDouble);
+//            model.addAttribute("monthlyincomelong", monthlyincomeDouble);
             userAccount.setIncome(monthlyincomeDouble);
             userAccount.setUser(loggedInUser);
             userAccount.setSavings(savingsoverall);
@@ -99,13 +98,30 @@ public class AccountController {
 
     @PostMapping("/addBill")
     public String addBill(@ModelAttribute Account account, @ModelAttribute Bill bill, @RequestParam String billname,
-                          @RequestParam Double billamount, Model model) {
+                          @RequestParam Double billamount, @RequestParam(required = false) String savings, Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        bill.setName(billname);
-        bill.setAmount(billamount);
-        bill.setAccount(accountRepository.findAccountByUser_Id(loggedInUser.getId()));
-        bill.setUser(loggedInUser);
-        billRepository.save(bill);
+        Double savingsDouble = 0.00;
+        if(!savings.equals("")) {
+            savingsDouble = Double.parseDouble(savings);
+        }
+        if(billRepository.findByName("savings") == null && !savings.equals("")){
+            Bill savingsBill = new Bill();
+            savingsBill.setName("savings");
+            savingsBill.setAmount(savingsDouble);
+            savingsBill.setUser(loggedInUser);
+            billRepository.save(savingsBill);
+        } else if(billRepository.findByName("savings") != null && !savings.equals("")){
+            Bill savingsBill = billRepository.findByName("savings");
+            savingsBill.setAmount(savingsDouble);
+            billRepository.save(savingsBill);
+        }
+        if(!billname.equals("") && billamount != null) {
+            bill.setName(billname);
+            bill.setAmount(billamount);
+            bill.setAccount(accountRepository.findAccountByUser_Id(loggedInUser.getId()));
+            bill.setUser(loggedInUser);
+            billRepository.save(bill);
+        }
         return "redirect:/account-setup";
     }
     @PostMapping("/bill/{id}")

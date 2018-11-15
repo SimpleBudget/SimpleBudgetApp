@@ -8,25 +8,53 @@
 <nav th:replace="partials :: navbar"/>
 <h1>Setup your Finacnial Account</h1>
 <h2>Budget Yourself!</h2>
+<h3 th:if="${bills.size() >= 1}">Your bills</h3>
+<hr/>
+<div th:each="bill : ${bills}">
+    <h4 th:text="${bill.name} + ': ' + ${bill.amount}"></h4>
+    <form th:action="|/bill/${bill.id}|" th:method="post">
+        <input type="submit"  value="X"/>
+    </form>
+</div>
+<div class="form-group">
+    <form th:action="@{/addBill}" method="post">
+        <div class="form-group">
+            <label for="savings">How much would you like to save every month?</label>
+            <input class="form-control" id="savings" name="savings" type="number"/>
+        </div>
+
+
+        <h3 for="billname">Enter your bills here.. </h3>
+        <label for="billname">Enter the bill name here</label>
+        <input class="form-control" id="billname" name="billname"/>
+        <label for="billamount">Enter the bill amount here</label>
+        <input class="form-control" id="billamount" name="billamount"/>
+        <input type="submit" formaction= "/addBill" formmethod="post" value="Add a Bill"/>
+    </form>
+</div>
 <form th:action="@{/account-setup}" method="POST">
     <div class="form-group">
         <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
-        <input class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"/>
+        <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income/4}"/>
+        <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income/2}"/>
+        <input th:if="${account != null &amp;&amp; account.option == 3}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income}"/>
+        <input th:if="${account == null}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"/>
+
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="option1"/>
+                <input th:if="${account == null}"class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="option1"/>
                 <label class="form-check-label" for="exampleRadios1">
                     Weekly
                 </label>
             </div></li>
             <li class="list-group-item"><div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="option2"/>
+                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="option2"/>
                 <label class="form-check-label" for="exampleRadios2">
                     Bi-weekly
                 </label>
             </div></li>
             <li class="list-group-item"><div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios3" value="option3"/>
+                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios3" value="option3"/>
                 <label class="form-check-label" for="exampleRadios3">
                     Monthly
                 </label>
@@ -36,33 +64,16 @@
 
     <div class="form-group">
         <label for="savingsoverall">How much do you current have saved</label>
-        <input class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here"/>
+        <input th:if="${account != null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here" th:value="${account.savings}"/>
+        <input th:if="${account == null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here"/>
+
     </div>
-    <div class="form-group">
-        <label for="savings">How much would you like to save every month?</label>
-        <input class="form-control" id="savings" name="savings" type="number"/>
-    </div>
+
 
     <input value="Calculate my Budget!!" type="submit" />
 </form>
-<h3>Your bills</h3>
-<hr/>
-<div th:each="bill : ${bills}">
-    <h4 th:text="${bill.name} + ': ' + ${bill.amount}"></h4>
-    <form th:action="|/bill/${bill.id}|" th:method="post">
-    <input type="submit"  value="X"/>
-    </form>
-</div>
-<div class="form-group">
-    <form th:action="@{/addBill}" method="post">
-        <h3 for="billname">Enter your bills here.. </h3>
-        <label for="billname">Enter the bill name here</label>
-        <input class="form-control" id="billname" name="billname"/>
-        <label for="billamount">Enter the bill amount here</label>
-        <input class="form-control" id="billamount" name="billamount"/>
-        <input type="submit" formaction= "/addBill" formmethod="post" value="Add a Bill"/>
-    </form>
-</div>
+
+
 
 <footer th:replace="partials :: footer"/>
 </body>
