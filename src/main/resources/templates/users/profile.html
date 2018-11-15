@@ -31,9 +31,9 @@
 
 <h4 th:if="${billTotal > 0}" id="spendAmount"></h4>
 
-<h4 th:if="${account != null &amp;&amp; account.option == 1}"   th:text="'You need to save: ' + ${billTotal/4} + ' per paycheck.'"></h4>
-<h4 th:if="${account != null &amp;&amp; account.option == 2}"   th:text="'You need to save: ' + ${billTotal/2} + ' per paycheck.'"></h4>
-<h4 th:if="${account != null &amp;&amp; account.option == 3}"   th:text="'You need to save: ' + ${billTotal}  + ' per paycheck.'"></h4>
+<h4 th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/4} + ' per paycheck.'"></h4>
+<h4 th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/2} + ' per paycheck.'"></h4>
+<h4 th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal}  + ' per paycheck.'"></h4>
 
     <script>
         let moneyAfterBills = document.getElementById("moneyAfterBills");

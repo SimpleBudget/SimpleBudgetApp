@@ -18,7 +18,7 @@
     - [x] `Login` Button
     - [x] `About SB` button to about us page
     - [x] `Community/Post` to the community page
-    - [] 3 most recent reviews
+    - [] see reviews
     
     * _From the `SignUp` button..._
       - [x] Fields for Username, Password, Email, phone, and...
@@ -29,7 +29,6 @@
  * Account Info
     - [] Field for Saving / income
     - [] Supplemental income
-    - [] My Post
     * Login
       - [x] `Username` and `Password`
       - [x] Verifies username exists
@@ -37,30 +36,21 @@
       - [x] Forwards to `Profile`  
         *  Profile
           - [x] Information about the user (username, email, phonenumber, post)
-          - [] Stats about post/commments
           - [] `Notification` option, to notifiy of a reply to a thread
          * Dashboard
              - [x] ~Ability to  edit current profile information
-             - [] ~Can see their own stats about post~
-             - [] ~Can see most recent post~
-             - [] Can update there budget savings/income informatrion
+             - [x] Can update there budget savings/income information
 #### Community
   * Post
     -[x] Be able to post to community
     -[x] No one can hijack or edit others post or comments
-    - [x] Be able to reply to comments
-    - [] ~Be able to upvote/downvote a comment~
+    -[x] Be able to reply to comments
     -[] Be able to receive notification from selected thread
 #### Reviews
  * Reviews
  -[x] Be able to post a review and view review
  -[x] Be able to update/edit a review
- -[] limit 1 review per user
+ -[x] limit 1 review per user
  
  
-       
- ## Special
- #### ~Admin~ #
-           * Registration 
-           Be able to log in and moderate post/community. 
-           Work on API's implementation 
+  

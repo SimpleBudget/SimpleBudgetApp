@@ -10,7 +10,7 @@ public class Account {
     private long id;
     @Column(nullable = false)
     private Double income;
-    @Column(nullable = false)
+    @Column
     private Double savings;
     @Column(nullable = false, name = "choice")
     private long option;
