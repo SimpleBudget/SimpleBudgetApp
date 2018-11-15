@@ -1,0 +1,49 @@
+/* parallex section*/
+#plx {
+    height: 950px;
+    background: url("../img/logo1.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wtitle{
+    padding: 250px 20px;
+
+}
+.wtitle h2{
+    font-size: 36px;
+    font-weight: bold;
+}
+/* about us*/
+#aboutsb{
+    height: 750px;
+    background: url("../img/logo2.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.about{
+    padding: 150px 20px;
+
+}
+.about h2{
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+}
+/* video container*/
+#video{
+    /*height: 950px;*/
+    /*background: url("../img/wave.mp4");*/
+    /*background-attachment: fixed;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
+/*.video h2{*/
+    /*color: white;*/
+    /*font-size: 36px;*/
+    /*font-weight: bold;*/
+/*}*/

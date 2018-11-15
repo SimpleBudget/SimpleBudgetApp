@@ -2,10 +2,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="partials :: head('This is the Home Page')"></th:block>
+    <th:block th:include="partials :: head('Home | Simple Budget')"/>
+    <link rel="stylesheet" th:href="@{/css/homepage.css}" />
+
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+
+<section id="plx">
+    <div class="container">
+     <div class="wtitle text-center text-light">
+        <h2> Welcome to Simple Budget</h2>
+     </div>
+    </div>
+</section>
+
+<section id="video center" style="margin-right: 750px">
+    <div class="container">
+    <div class="video text-center text-light">
+        <video  autoplay="autoplay" muted="muted" loop="loop" width="2000" height="750">
+            <source src="../img/wave.mp4" type="video/mp4"/>
+            <!--<source src="../img/wave.ogv" type="video/ogg"/>-->
+            <h2> This is a video example!</h2>
+        </video>
+    </div>
+    </div>
+</section>
+
+<section id="aboutsb">
+    <div class="container">
+        <div class="about text-center text-light">
+            <h2> Everyone has money, however not everyone is good at budgeting the money they have. Whether you are already financially stable and want to maintain that or if you just want to take the steps to become more budget savy then Simple Budget is for you.</h2>
+        </div>
+    </div>
+</section>
+
+
 
 
 <footer th:replace="partials :: footer"/>
