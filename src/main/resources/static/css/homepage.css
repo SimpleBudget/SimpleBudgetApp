@@ -34,19 +34,21 @@
     font-weight: bold;
 }
 /* video container*/
-#video{
+/*#video{*/
     /*height: 950px;*/
     /*background: url("../img/wave.mp4");*/
     /*background-attachment: fixed;*/
     /*background-position: center;*/
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
-}
+/*}*/
 /*.video h2{*/
     /*color: white;*/
     /*font-size: 36px;*/
     /*font-weight: bold;*/
 /*}*/
-body{
-    background-color: #66ccff;
+
+video {
+    object-fit: fill;
+
 }
