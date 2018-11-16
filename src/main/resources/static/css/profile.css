@@ -8,3 +8,14 @@ h1 {
 
 }
 
+#main-card {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#piechart {
+    width: 50%;
+    height: 500px;
+    margin: 0 auto;
+}
+

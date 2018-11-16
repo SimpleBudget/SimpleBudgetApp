@@ -10,7 +10,7 @@
 
 <h1 th:text="'Welcome, ' + ${user.username}"></h1>
 
-<div class="card text-center w-50" >
+<div class="card text-center" id="main-card">
 <h3  class="card-header" th:if="${account != null}">Your monthly income</h3>
     <div class="card-body">
 <p th:if="${account != null}" id="monthlyIncome" th:text="${account.getIncome()}"></p>
@@ -67,7 +67,7 @@
         chart.draw(data, options);
     }
 </script>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+<div id="piechart"></div>
 <div class="jumbotron jumbotron-fluid">
 <h1>User information</h1>
 <h2 th:text="${user.username}"></h2>
