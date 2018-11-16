@@ -10,11 +10,11 @@
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
     <div class="form-group">
     <label for="username">Username</label>
-    <input class="form-control" id="username" th:field="*{username}" th:required="required"/>
+    <input class="form-control" pattern=".*\S+.*" id="username" th:field="*{username}" th:required="required"/>
     </div>
     <div class="form-group">
     <label for="email">Email</label>
-    <input class="form-control" id="email" th:field="*{email}" th:required="required" />
+    <input class="form-control" pattern=".*\S+.*" id="email" type="email" th:field="*{email}" th:required="required" />
     </div>
     <div class="form-group">
     <label for="password">Password</label>
