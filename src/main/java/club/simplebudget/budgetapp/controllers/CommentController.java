@@ -5,6 +5,7 @@ import club.simplebudget.budgetapp.models.Post;
 import club.simplebudget.budgetapp.models.User;
 import club.simplebudget.budgetapp.repositories.CommentRepository;
 import club.simplebudget.budgetapp.repositories.PostRepository;
+import club.simplebudget.budgetapp.services.SmsSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,16 +18,19 @@ public class CommentController {
     private PostRepository postRepository;
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private SmsSender smsSender;
 
     @PostMapping("/comment/{id}")
         public String postComment(@PathVariable long id, @RequestParam String commentbody){
-            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            Comment newComment = new Comment();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Comment newComment = new Comment();
         Post thePost = postRepository.findOne(id);
         newComment.setCommentbody(commentbody);
         newComment.setUser(loggedInUser);
         newComment.setPost(thePost);
         commentRepository.save(newComment);
+        smsSender.send();
         return "redirect:/posts/" + id;
 
     }
@@ -39,6 +43,11 @@ public class CommentController {
         reply.setUser(loggedInUser);
         reply.setCommentId(theComment);
         commentRepository.save(reply);
+//        if (theComment.getUser().getId() != loggedInUser.getId()) {
+//
+//        }
+        smsSender.sendReply();
+//        smsSender.sendReply(loggedInUser, reply);
         return "redirect:/posts/" + theComment.getPost().getId();
 
     }
