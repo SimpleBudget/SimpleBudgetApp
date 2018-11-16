@@ -84,11 +84,14 @@ public class SmsSender {
                if (user.getPhonenumber().equals("+12146775272")) {
                    List<Post> userPosts = postRepository.findAllByUser_Id(user.getId());
                    for (Post post : userPosts) {
-                       Iterable<Comment> comments = commentRepository.findAll();
-                       for (Comment comment : comments) {
-                           if (comment.getCommentId() != null && comment.getUser().getId() != user.getId()) {
+                       ArrayList<Comment> comments = commentRepository.findAll();
+                       for (int i = comments.size()-1; i > 0; i--) {
+                           if (comments.get(i).getCommentId() != null && comments.get(i).getUser().getId() != user.getId() && user.getId() == comments.get(i).getCommentId().getUser().getId()) {
                                System.out.println("OPTION ONE");
-                               System.out.println(comment.getPost());
+                               System.out.println(comments.get(i).getCommentbody());
+                               System.out.println("THIS IS THE FIRST PART OF THE AND " + comments.get(i).getUser().getId());
+                               System.out.println("THIS IS THE SECOND PART " + user.getId());
+                               System.out.println("this is the last piece " + comments.get(i).getCommentId().getUser().getId());
                                Message message = Message
                                        .creator(new PhoneNumber("+12146775272"), // to
                                                new PhoneNumber("+18177847631"), // from
@@ -96,6 +99,8 @@ public class SmsSender {
                                        .create();
 
                                return (message.getSid());
+                           } else {
+                               return"";
                            }
                        }
                    }
