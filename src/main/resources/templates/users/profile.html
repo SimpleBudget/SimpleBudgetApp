@@ -1,39 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Your Profile ')">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="partials :: head('Home | Simple Budget')"/>
+    <link rel="stylesheet" th:href="@{/css/profile.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<h1>User information</h1>
-<h2 th:text="${user.username}"></h2>
-<h2 th:text="${user.email}"></h2>
-<h2 th:text="${user.phonenumber}"></h2>
 
+<h1 th:text="'Welcome, ' + ${user.username}"></h1>
 
-
-<h3 th:if="${account != null}">Your monthly income</h3>
+<div class="card text-center w-50" >
+<h3  class="card-header" th:if="${account != null}">Your monthly income</h3>
+    <div class="card-body">
 <p th:if="${account != null}" id="monthlyIncome" th:text="${account.getIncome()}"></p>
+    </div>
 
-<h3 th:if="${bills.size() >= 1}">Your bills</h3>
-<div th:each="bill : ${bills}">
+<h3  class="card-header" th:if="${bills.size() >= 1}">Your bills</h3>
+<div class="card-body" th:each="bill : ${bills}">
     <h4 th:text="${bill.name}"></h4>
     <p th:text="${bill.amount}"></p>
-    <hr />
 </div>
-<h3 th:if="${billTotal > 0}">Total of your Bills</h3>
+    <div class="card-body">
+<h3 th:if="${billTotal > 0}"  class="card-header">Total of your Bills</h3>
 <p th:if="${billTotal > 0}" id="billTotal" th:text="${billTotal}"></p>
-<h3 th:if="${billTotal > 0}">Money left over after your bills</h3>
+<h3 th:if="${billTotal > 0}"  class="card-header">Money left over after your bills</h3>
 <p th:if="${billTotal > 0}" id="moneyAfterBills" th:text="${moneyAfterBills}"></p>
+<h4 class="card-header" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/4} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+<h4 class="card-header" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/2} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+<h4 class="card-header" th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+<h4 class="card-header" th:if="${billTotal > 0}" id="spendAmount"></h4>
+
 <a href="/account-setup"><button th:if="${account == null}">setup your account!</button></a>
 <a href="/account-setup"><button th:if="${account != null}">edit your account!</button></a>
-<h3 th:if="${billTotal > 0}">Calculate what you can spend per day after bills!</h3>
+</div>
+</div>
 
-<h4 th:if="${billTotal > 0}" id="spendAmount"></h4>
 
-<h4 th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/4} + ' per paycheck.'"></h4>
-<h4 th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal/2} + ' per paycheck.'"></h4>
-<h4 th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + ${billTotal}  + ' per paycheck.'"></h4>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         let moneyAfterBills = document.getElementById("moneyAfterBills");
@@ -52,9 +56,6 @@
             ['Monthly Income', 'Expenses'],
             ['Total of bills', Number(billTotal.innerText)],
             ['Daily Spending', moneyAfterBillsNumber]
-            // ['Commute',  2],
-            // ['Watch TV', 2],
-            // ['Sleep',    7]
         ]);
 
         var options = {
@@ -67,7 +68,12 @@
     }
 </script>
 <div id="piechart" style="width: 900px; height: 500px;"></div>
-
+<div class="jumbotron jumbotron-fluid">
+<h1>User information</h1>
+<h2 th:text="${user.username}"></h2>
+<h2 th:text="${user.email}"></h2>
+<h2 th:text="${user.phonenumber}"></h2>
+</div>
 </body>
 <footer th:replace="partials :: footer"/>
 
