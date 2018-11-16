@@ -9,10 +9,13 @@ import club.simplebudget.budgetapp.repositories.UserRepository;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.StreamSupport;
+
 @Service
 public class SmsSender {
 
@@ -41,11 +44,13 @@ public class SmsSender {
                 if (user.getPhonenumber().equals("+12146775272")) {
                     List<Post> userPosts = postRepository.findAllByUser_Id(user.getId());
                     for (Post post : userPosts) {
-                        List<Comment> comments = commentRepository.findAllByPost(post);
-                        for (Comment comment : comments) {
-                            if (comment.getPost() != null && comment.getUser().getId() != user.getId()) {
+                        ArrayList<Comment> comments = commentRepository.findAll();
+                        for (int i = comments.size()-1; i > 0; i--) {
+                            if (comments.get(i).getPost() != null && comments.get(i).getUser().getId() != user.getId()) {
                                 System.out.println("OPTION ONE");
-                                System.out.println(comment.getPost());
+                                System.out.println(comments.get(i).getCommentbody());
+                                System.out.println("THIS IS THE FIRST PART OF THE AND " + comments.get(i).getUser().getId());
+                                System.out.println("THIS IS THE SECOND PART " + user.getId());
                                 Message message = Message
                                         .creator(new PhoneNumber("+12146775272"), // to
                                                 new PhoneNumber("+18177847631"), // from
@@ -53,6 +58,8 @@ public class SmsSender {
                                         .create();
 
                                 return (message.getSid());
+                            } else {
+                                return"";
                             }
                         }
                     }
