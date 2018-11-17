@@ -10,11 +10,11 @@
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
     <div class="form-group">
     <label for="username">Username</label>
-    <input class="form-control" pattern=".*\S+.*" id="username" th:field="*{username}" th:required="required"/>
+    <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="username" name="username" th:field="*{username}" th:required="required"/>
     </div>
     <div class="form-group">
     <label for="email">Email</label>
-    <input class="form-control" pattern=".*\S+.*" id="email" type="email" th:field="*{email}" th:required="required" />
+    <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="email" type="email" name="email" th:field="*{email}" th:required="required" />
     </div>
     <div class="form-group">
     <label for="password">Password</label>
@@ -31,6 +31,74 @@
 
     <input value="Sign me up!" type="submit" />
 </form>
+<div th:if="${userExists  &amp;&amp; !emailExists}" id="usernameError" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Register Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Username is already taken! please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div th:if="${emailExists &amp;&amp; !userExists}" id="emailError" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Register Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Email is already taken! please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div th:if="${emailExists &amp;&amp; userExists}" id="Both" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Register Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>it looks like this user already is registered, do you want to try logging in?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="yes">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <footer th:replace="partials :: footer"/>
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#usernameError').modal('show');
+        $('#emailError').modal('show');
+        $('#Both').modal('show');
+    });
+    let yes = document.getElementById("yes");
+    yes.addEventListener('click', (e) =>{
+        e.preventDefault();
+        location="/login";
+
+    })
+</script>
 </body>
 </html>
