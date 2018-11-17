@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
+    private boolean userExists = false;
+    private boolean emailExists = false;
 
 
     public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
@@ -22,12 +24,19 @@ public class UserController {
 
     @GetMapping("/sign-up")
     public String showSignupForm(Model model) {
+        model.addAttribute("userExists",userExists);
+        model.addAttribute("emailExists",emailExists);
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user, @RequestParam String password, @RequestParam String confirmpassword) {
+    public String saveUser(@ModelAttribute User user, @RequestParam String password, @RequestParam String confirmpassword, @RequestParam String username, @RequestParam String email) {
+        this.userExists = users.findByUsername(username) != null;
+        this.emailExists = users.findByEmail(email) != null;
+        if(userExists || emailExists){
+            return "redirect:/sign-up";
+        }
         if (password.equals(confirmpassword)) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
@@ -40,12 +49,19 @@ public class UserController {
     }
     @GetMapping("/users/{id}/edit")
     public String editProfile(@PathVariable Long id, Model vModel){
+        vModel.addAttribute("userExists",userExists);
+        vModel.addAttribute("emailExists",emailExists);
         vModel.addAttribute("user",users.findOne(id));
         return "users/edit";
     }
     @PostMapping("/users/{id}/edit")
-    public String updateProfile(@ModelAttribute User user, @PathVariable Long id, @RequestParam String newpassword,@RequestParam String confirmpassword){
+    public String updateProfile(@ModelAttribute User user, @PathVariable Long id, @RequestParam String newpassword,@RequestParam String confirmpassword, @RequestParam String email, @RequestParam String username){
         User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        this.userExists = users.findByUsername(username) != null && users.findByUsername(username).getId() != loggedInUser.getId();
+        this.emailExists = users.findByEmail(email) != null && users.findByEmail(email).getId() != loggedInUser.getId();
+        if(userExists || emailExists){
+            return "redirect:/users/" + id + "/edit";
+        }
         if(users.findOne(id).getId() == loggedInUser.getId() && !newpassword.equals("")&& confirmpassword.equals(newpassword)) {
             String hash = passwordEncoder.encode(newpassword);
             user.setPassword(hash);
