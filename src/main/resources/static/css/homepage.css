@@ -43,10 +43,27 @@
     /*background-size: cover;*/
 /*}*/
 /*.video h2{*/
+    /*z-index: auto;*/
     /*color: white;*/
     /*font-size: 36px;*/
     /*font-weight: bold;*/
 /*}*/
+/*.video_main{*/
+    /*overflow: hidden;*/
+/*}*/
+/*.video_main video{*/
+    /*width:100%;*/
+    /*z-index: -1500;*/
+/*}*/
 video {
+    height: 750px;
     object-fit: fill;
+}
+.content h2{
+    color:whitesmoke;
+    text-align: center;
+    font-size: 36px;
+    z-index: 100;
+    position: absolute;
+    top: 175px;
 }
