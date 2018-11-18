@@ -6,20 +6,19 @@
 
 </head>
 <body>
-<div class="sidenav">
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-</div>
-
 <nav th:replace="partials :: navbar"/>
-<div class="content">
+<div>
 <h1 th:text="'Welcome, ' + ${user.username}"></h1>
 
-<div class="card text-center" id="main-card">
+<div class="card text-center color-white" id="main-card">
 <h3  class="card-header" th:if="${account != null}">Your monthly income</h3>
     <div class="card-body">
 <p th:if="${account != null}" id="monthlyIncome" th:text="${account.getIncome()}"></p>
+    </div>
+
+    <h3  class="card-header" th:if="${account != null}">Your Current Savings</h3>
+    <div class="card-body">
+        <p th:if="${account != null}" id="overallSavings" th:text="${account.getSavings()}"></p>
     </div>
 
 <h3  class="card-header" th:if="${bills.size() >= 1}">Your bills</h3>
