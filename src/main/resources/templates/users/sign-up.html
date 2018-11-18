@@ -1,11 +1,14 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Sign Up!')">
+<head>
+    <th:block th:include="partials :: head('Sign Up!')"/>
+    <link rel="stylesheet" th:href="@{/css/sign-up.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+<div class="card text-center" id="main-card">
 <h1>Create an account</h1>
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
     <div class="form-group">
@@ -85,6 +88,7 @@
         </div>
 
     </div>
+</div>
 </div>
 <footer th:replace="partials :: footer"/>
 <script type="text/javascript">
