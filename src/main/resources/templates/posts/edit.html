@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Edit a post')">
+<head>
+    <th:block th:include="partials :: head('Edit a post')"/>
+    <link rel="stylesheet" th:href="@{/css/edit-posts.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+<div class="card text-center" id="main-card">
 <form th:object="${post}" th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="post">
     <div class="form-group">
     <label for="title">Title:</label>
-    <input class="form-control" id="title" th:field="*{title}" required="required"/>
+    <input class="form-control" id="title" pattern=".*\S+.*" title="title cannot be blank" th:field="*{title}" required="required"/>
     </div>
     <br/>
     <div class="form-group">
     <label for="body">Body:</label>
-    <textarea class="form-control" rows="8" cols="100" id="body" th:field="*{body}" required="required"/>
+    <textarea class="form-control" rows="8" cols="100" id="body" pattern=".*\S+.*" title="body cannot be blank" th:field="*{body}" required="required"/>
     </div>
     <input type="submit"/><br/><br/><input type="submit" value="Delete"  th:formaction="@{'/posts/' + ${post.id} + '/delete'}" th:formmethod="post"/>
 </form>
+</div>
 <footer th:replace="partials :: footer"/>
 </body>
 </html>

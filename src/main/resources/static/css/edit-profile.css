@@ -5,10 +5,11 @@ body {
 }
 
 #main-card {
+
     background-color: black;
     color: #eae0c8;
-    width: 50%;
+    width: 35%;
     height: 25%;
-    margin: 125px auto 500px auto;
+    margin: 75px auto 500px auto;
 
 }

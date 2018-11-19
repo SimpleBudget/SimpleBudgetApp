@@ -36,8 +36,6 @@ public class SmsSender {
 
     public String send() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-        System.out.println("look here");
-        System.out.println("wdfisthis"+ userRepository.findAll());
         if (userRepository.findAll() != null) {
             Iterable<User> usersWithPhonenumber = userRepository.findAll();
             for (User user : usersWithPhonenumber) {
@@ -47,10 +45,6 @@ public class SmsSender {
                         ArrayList<Comment> comments = commentRepository.findAll();
                         for (int i = comments.size()-1; i > 0; i--) {
                             if (comments.get(i).getPost() != null && comments.get(i).getUser().getId() != user.getId()) {
-                                System.out.println("OPTION ONE");
-                                System.out.println(comments.get(i).getCommentbody());
-                                System.out.println("THIS IS THE FIRST PART OF THE AND " + comments.get(i).getUser().getId());
-                                System.out.println("THIS IS THE SECOND PART " + user.getId());
                                 Message message = Message
                                         .creator(new PhoneNumber("+12146775272"), // to
                                                 new PhoneNumber("+18177847631"), // from
@@ -76,8 +70,6 @@ public class SmsSender {
    return ""; }
    public String sendReply(){
        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-       System.out.println("look here");
-       System.out.println("wdfisthis"+ userRepository.findAll());
        if (userRepository.findAll() != null) {
            Iterable<User> usersWithPhonenumber = userRepository.findAll();
            for (User user : usersWithPhonenumber) {
@@ -87,11 +79,6 @@ public class SmsSender {
                        ArrayList<Comment> comments = commentRepository.findAll();
                        for (int i = comments.size()-1; i > 0; i--) {
                            if (comments.get(i).getCommentId() != null && comments.get(i).getUser().getId() != user.getId() && user.getId() == comments.get(i).getCommentId().getUser().getId()) {
-                               System.out.println("OPTION ONE");
-                               System.out.println(comments.get(i).getCommentbody());
-                               System.out.println("THIS IS THE FIRST PART OF THE AND " + comments.get(i).getUser().getId());
-                               System.out.println("THIS IS THE SECOND PART " + user.getId());
-                               System.out.println("this is the last piece " + comments.get(i).getCommentId().getUser().getId());
                                Message message = Message
                                        .creator(new PhoneNumber("+12146775272"), // to
                                                new PhoneNumber("+18177847631"), // from
