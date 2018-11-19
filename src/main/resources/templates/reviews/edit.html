@@ -11,15 +11,7 @@
         <input type="range" min="1" max="5"  value ="1"  class = "slider" id="rating" th:field="*{rating}"/>
         <span>Rating:</span>
         <span id="f"></span>
-        <script>
-            var slideCol = document.getElementById("rating");
-            var y = document.getElementById("f");
-            y.innerHTML=slideCol.value;
-
-            slideCol.oninput=function(){
-                y.innerHTML=this.value;
-            }
-        </script>
+        <script th:src="@{/js/reviews.js}"></script>
     </div>
     <br/>
     <div class="form-group">
