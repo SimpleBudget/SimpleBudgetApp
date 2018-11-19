@@ -32,8 +32,6 @@ public class ReviewController {
 
     @GetMapping("/reviews")
     public String reviewsIndex(Model model){
-        model.addAttribute("reviews",reviewRepository.findAll());
-        return "reviews/index";
         if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("reviews",reviewRepository.findAll());
