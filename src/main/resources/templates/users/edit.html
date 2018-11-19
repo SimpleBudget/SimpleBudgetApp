@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Log In')">
+<head>
+    <th:block th:include="partials :: head('Edit Profile')"/>
+    <link rel="stylesheet" th:href="@{/css/edit-profile.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="container">
+
+<div class="container text-center;" id="main-card">
     <div class ="row">
         <div class="col l12">
             <h3>Edit user</h3>
