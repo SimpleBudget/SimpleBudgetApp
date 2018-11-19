@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('All Reviews')">
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<div th:each="review : ${reviews}">
+
+
+    <div class="container-fluid">
+        <div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <span th:text="'Posted By: ' + ${review.user.username}"></span>
+                    </div>
+                    <div thclass="card-body">
+                        <a th:href="@{|/reviews/${review.id}/edit|}">
+                            <h1 class="card-title" th:text="${review.rating}"></h1></a>
+                        <p class="card-text" th:text="${review.body}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials :: footer"/>
+
+</body>
+
+</html>
