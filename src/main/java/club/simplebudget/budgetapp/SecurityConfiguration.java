@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
@@ -56,9 +57,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/posts/create", // only authenticated users can create ads
                         "/posts/{id}/edit", // only authenticated users can edit ads
                         "/reviews/create", // only authenticated users can create reviews
-                        "/reviews/{id}/edit" // only authenticated users can edit reviews
+                        "/reviews/{id}/edit",
+                        "/reviews/index"// only authenticated users can edit reviews
                 )
-                .authenticated()
+                .authenticated();
+              http.headers().frameOptions().disable()
         ;
     }
 }

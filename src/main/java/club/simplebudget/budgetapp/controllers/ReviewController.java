@@ -21,8 +21,14 @@ public class ReviewController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/reviews")
+    @GetMapping("/reviews-frame")
     public String reviews(Model model){
+        model.addAttribute("reviews",reviewRepository.findAll());
+        return "reviews/reviewsframe";
+    }
+
+    @GetMapping("/reviews")
+    public String reviewsIndex(Model model){
         model.addAttribute("reviews",reviewRepository.findAll());
         return "reviews/index";
     }
