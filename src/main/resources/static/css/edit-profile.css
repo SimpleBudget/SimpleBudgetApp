@@ -1,12 +1,14 @@
 body {
-    background-color: #0089de;
+    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
 }
 
 #main-card {
 
     background-color: black;
     color: #eae0c8;
-    width: 50%;
+    width: 35%;
     height: 25%;
     margin: 75px auto 500px auto;
 
