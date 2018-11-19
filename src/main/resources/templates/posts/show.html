@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <th:block th:include="partials :: navbar"></th:block>
 </nav>
-<div class="card text-center" id="main-card">
+<div class="card" id="main-card">
     <div class="card-header">
         <span th:text="'Posted By: ' + ${Post.user.username}"></span>
     </div>
@@ -17,7 +17,6 @@
         <h1 class="card-title" th:text="${Post.title}"></h1>
         <p class="card-text" th:text="${Post.body}"></p>
     </div>
-</div>
 <form  style="display: none;" th:action='|/comment/${Post.id}|' th:method='post' sec:authorize='isAuthenticated()' id="commentForm">
     <div class='form-group'>
         <div class='form-group'>
@@ -27,17 +26,17 @@
             </div>
        <input type='submit'/> </div> </form>
 <a th:if="${loggedInUser.id == Post.user.id}" th:href="@{'/posts/' + ${Post.id} + '/edit'}"><button>Edit Post</button><br/></a>
-<button sec:authorize='isAuthenticated()' id="show">Comment</button>
+<button style="width: 15%" sec:authorize='isAuthenticated()' id="show">Comment</button>
 <ul>
-    <li th:each="comment : ${Post.comments}">
-        <div class="card">
-            <div class="card-header">
+    <li style="list-style-type: none; background-color: black;" th:each="comment : ${Post.comments}">
+        <div class="card" style="background-color: black">
+            <div class="card-header" style="background-color: black;">
                 <span th:text="'Posted By: ' + ${comment.user.username}"></span>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color: black;">
                 <p class="card-text" th:text="${comment.commentbody}"></p>
             </div>
-            <button th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
+            <button style="width: 15%" th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply">Reply</button> <br/> <button style="width: 15%" th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
             <form th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
                 <div class='form-group'>
                     <div class='form-group'>
@@ -63,8 +62,8 @@
 
             </form>
             <ul>
-                <li th:each="comment : ${comment.comments}">
-                    <div class="card">
+                <li style="list-style-type: none;" th:each="comment : ${comment.comments}">
+                    <div class="card" style="background-color: black;">
                         <div class="card-header">
                             <span th:text="'Posted By: ' + ${comment.user.username}"></span>
                         </div>
@@ -90,48 +89,10 @@
         </div>
     </li>
 </ul>
+</div>
 
 
-
-<script>
-        let button = document.getElementById("show");
-        let commentForm = document.getElementById("commentForm");
-        button.addEventListener("click", (e) => {
-            e.preventDefault();
-            commentForm.style.display = "block";
-            button.style.display = "none";
-        });
-        let editForm = Array.from(document.getElementsByClassName("editForm"));
-        let editComment = Array.from(document.getElementsByClassName("editComment"));
-        let showreply = Array.from(document.getElementsByClassName("showReply"));
-        let replyForm = Array.from(document.getElementsByClassName("replyForm"));
-        let editReplyForm = Array.from(document.getElementsByClassName("editReplyForm"));
-        let editReply = Array.from(document.getElementsByClassName("editReply"));
-
-
-        showreply.forEach((element, index)=>{
-            element.addEventListener("click", (e) => {
-                e.preventDefault();
-                button.style.display = "none";
-                replyForm[index].style.display = "block";
-            });
-        });
-        editComment.forEach((element, index) =>{
-            element.addEventListener("click", (e) =>{
-                e.preventDefault();
-                editForm[index].style.display = "block";
-            });
-
-        });
-        editReply.forEach((element, index) =>{
-            element.addEventListener("click", (e) =>{
-                e.preventDefault();
-                editReplyForm[index].style.display = "block";
-            });
-
-        });
-
-</script>
+<script th:src="@{/js/commentForm.js}"></script>
 
 <footer th:replace="partials :: footer"></footer>
 </body>
