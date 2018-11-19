@@ -10,7 +10,7 @@
     <th:block th:include="partials :: navbar"></th:block>
     <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{'/posts/' + ${Post.id} + '/edit'}">Edit Post</a>
 </nav>
-<div class="card text-center" id="main-card">
+<div class="card">
     <div class="card-header">
         <span th:text="'Posted By: ' + ${Post.user.username}"></span>
     </div>
@@ -90,6 +90,7 @@
         </div>
     </li>
 </ul>
+
 
 
 
