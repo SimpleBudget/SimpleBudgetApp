@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head('All Reviews')">
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
 </head>
 <body>
 <div th:each="review : ${reviews}">
-
+    <style>
+        body{
+         background-color: #343a40;
+        }
+        .card-header{
+            background-color: #343a40;
+            color:lightblue;
+        }
+        .card-body{
+            background-color: #343a40;
+            color:lightblue;
+        }
+    </style>
 
     <div class="container">
         <div>
             <div class="">
                 <div class="card">
                     <div class="card-header">
-                        <span th:text="'Posted By: ' + ${review.user.username}"></span>
+                        <span th:text="'Posted By:  ' + ${review.user.username}"></span>
                     </div>
                     <div class="card-body">
                         <!--<a th:href="@{|/reviews/${review.id}/edit|}">-->

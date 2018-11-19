@@ -56,7 +56,9 @@
 object-fit: fill;
     z-index: -1500;
 }
-
+video{
+    object-fit: fill;
+}
 
 /*video {*/
     /*!*height: 750px;*!*/
@@ -73,7 +75,8 @@ object-fit: fill;
     font-size: 36px;
     z-index: 100;
     position: absolute;
-    top: 998px;
+    top: 2800px;
+    right:152px;
 
 }
 .content2 iframe{
@@ -82,7 +85,10 @@ object-fit: fill;
     font-size: 36px;
     z-index: 100;
     position: absolute;
-    top: 3068px;
-    right: 152px;
+    top: 2900px;
+    right: 249px;
 
+}
+body{
+    background-color: #343a40;
 }
