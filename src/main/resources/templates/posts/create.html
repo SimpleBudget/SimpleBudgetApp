@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Create a post')">
+<head>
+    <th:block th:include="partials :: head('Create a post')"/>
+    <link rel="stylesheet" th:href="@{/css/create.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+<div class="card text-center" id="main-card">
 <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
     <div class="form-group">
     <label for="title">Title:</label>
@@ -18,6 +21,7 @@
     </div>
     <input type="submit"/>
 </form>
+</div>
 <footer th:replace="partials :: footer"/>
 </body>
 </html>

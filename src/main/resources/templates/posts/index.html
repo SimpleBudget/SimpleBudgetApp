@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('All Posts')">
+<head>
+    <th:block th:include="partials :: head('All Posts')"/>
+    <link rel="stylesheet" th:href="@{/css/index-posts.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
     <div th:each="post : ${posts}">
-        <div class="card">
+        <div class="card text-center" id="main-card">
             <div class="card-header">
                 <span th:text="'Posted By: ' + ${post.user.username}"></span>
             </div>
