@@ -11,32 +11,29 @@
 <div class="container text-center;" id="main-card">
     <div class ="row">
         <div class="col l12">
-            <h3>Edit user</h3>
+            <h3>Edit Profile</h3>
             <div class = "col l8 offset-l2">
                 <form  th:object="${user}" th:action="@{|/users/${user.id}/edit|}" th:method="POST" >
                     <label for="username">Username</label>
                     <input class="form-control disa" id="username" name="username" pattern=".*\S+.*" title="username cannot be blank" th:field="*{username}" />
-                    <!--<p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>-->
 
                     <label for="email">Email</label>
                     <input class="form-control" id="email" name="email" pattern=".*\S+.*" title="email cannot be blank" type="email" th:field="*{email}" required="required" />
-                    <!--<p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
 
-                    <label for="phonenumber">Phonenumber</label>
+                    <label for="phonenumber">Phone Number</label>
                     <input class="form-control" id="phonenumber" th:field="*{phonenumber}" />
 
-                    <!--<label for="password">Password Confirmation For Changes</label>-->
-                    <!--<input type="password" id="password" class="form-control" name="password" />-->
+
 
                     <label for="newpassword">New Password</label>
                     <input type="password" id="newpassword" class="form-control" name ="newpassword" />
-                    <!--<p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
 
                     <label for="confirmpassword">Confirm New Password</label>
                     <input type="password" id="confirmpassword" class="form-control" name ="confirmpassword" />
 
                     <input  class="btn-danger" type="submit" />
                 </form>
+            </div>
                 <div th:if="${userExists  &amp;&amp; !emailExists}" id="usernameError" class="modal fade" role="dialog">
                     <div class="modal-dialog">
 
@@ -91,13 +88,32 @@
 
                     </div>
                 </div>
+                <div th:if="${!passwordsMatch}" id="passwordError" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Register Error</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Both password fields must match</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
+
     </div>
 </div>
 <footer th:replace="partials :: footer"/>
 <script type="text/javascript">
     $(window).on('load',function(){
+        $('#passwordError').modal('show');
         $('#usernameError').modal('show');
         $('#emailError').modal('show');
         $('#Both').modal('show');

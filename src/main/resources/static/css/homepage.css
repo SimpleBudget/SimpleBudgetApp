@@ -58,9 +58,8 @@
 /*}*/
 
 
-
 video {
-    height: 750px;
+    /*height: 750px;*/
     object-fit: fill;
 
 }

@@ -3,78 +3,73 @@
 
 <head>
     <th:block th:include="partials :: head('About the Team!')"></th:block>
+    <link rel="stylesheet" th:href="@{/css/aboutteam.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-
-<!-- ====================  About Team ==================== -->
+<!-- ====================  About Us ==================== -->
 <section id="team" class="section">
-    <div class="container-fluid text-center">
+    <div class="container">
         <h2 class="section-head mt-3"><i class="fas fa-users header-icons"></i> Meet The Team</h2>
         <p class="lead hideOnSmall">The developers behind <a th:href="'/'" class="link-custom"> Simple Budget</a>
         </p>
         <hr />
         <div class="grid-profile">
 
-            <!-- =================  brittany profile ================= -->
-            <div id="brittany col-4">
-                <div class="image">
-                    <img src="https://s3.amazonaws.com/alumni.codeup.com/BrittanyRussell.jpg" alt="" />
-                </div>
-                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Brittany Russell - </h4>
+            <!-- =================  Brittany profile ================= -->
+            <div id="britt mb-">
+                <div class="brittanyPic teamImg"></div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto">Brittany Russell</h4>
+                <div id="icons">
                     <a href="mailto:brittanyrussell1103@gmail.com">
-                        Email
+                        <i class="fas fa-envelope-square"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/brittany-russell-codeup/" target="_#">
-                        LinkedIn
+                        <i class="fab fa-linkedin mx-2"></i>
                     </a>
                     <a href="https://github.com/brittanyrussell">
-                        GitHub
+                        <i class="fab fa-github-square"></i>
                     </a>
+                </div>
             </div>
 
-            <!-- ================= hunters profile ================= -->
-            <div id="hunter col-4">
-                <div class="image">
-                    <img src="https://s3.amazonaws.com/alumni.codeup.com/HunterHouts.jpg" alt="" />
-                </div>
-                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Hunter Houts- </h4>
+            <!-- ================= Hunter profile ================= -->
+            <div id="hunter">
+                <div class="hunterPic teamImg"></div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto">Hunter Houts</h4>
                 <div id="icons">
                     <a href="mailto:hunter.alexander.houts@gmail.com">
-                        Email
+                        <i class="fas fa-envelope-square"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/hunter-houts/" target="_#">
-                        LinkedIn
+                        <i class="fab fa-linkedin mx-2"></i>
                     </a>
                     <a href="https://github.com/Hunter-Houts">
-                        GitHub
+                        <i class="fab fa-github-square"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- ================= patrick profile ================= -->
-            <div id="patrick col-4">
-                <div class="image">
-                    <img src="https://s3.amazonaws.com/alumni.codeup.com/PatrickFisher.jpg" alt="" />
-                </div>
-                <h4 class="mb-1 mt-2 nameHighlight mx-auto"> - Patrick Fisher - </h4>
+            <!-- ================= Patrick profile ================= -->
+            <div id="patrick mb-5">
+                <div class="patrickPic teamImg"></div>
+                <h4 class="mb-1 mt-2 nameHighlight mx-auto">Patrick Fisher</h4>
                 <div id="icons">
                     <a href="mailto:patrick.ryan.fisher@gmail.com">
-                        Email
+                        <i class="fas fa-envelope-square"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/patrickryanfisher/" target="_#">
-                        LinkedIn
+                        <i class="fab fa-linkedin mx-2"></i>
                     </a>
                     <a href="https://github.com/patrickrfisher">
-                        GitHub
+                        <i class="fab fa-github-square"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <!-- ====================  Footer Section ====================  -->
 <footer th:replace="partials :: footer"/>
 

@@ -15,6 +15,7 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private boolean userExists = false;
     private boolean emailExists = false;
+    private boolean passwordsMatch = true;
 
 
     public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
@@ -26,7 +27,12 @@ public class UserController {
     public String showSignupForm(Model model) {
         model.addAttribute("userExists",userExists);
         model.addAttribute("emailExists",emailExists);
+        model.addAttribute("passwordsMatch",passwordsMatch);
+        System.out.println(passwordsMatch);
         model.addAttribute("user", new User());
+        this.passwordsMatch = true;
+        this.emailExists = false;
+        this.userExists = false;
         return "users/sign-up";
     }
 
@@ -43,15 +49,29 @@ public class UserController {
             users.save(user);
             return "redirect:/login";
         } else {
+            this.passwordsMatch = password.equals(confirmpassword);
+            System.out.println(passwordsMatch);
             return "redirect:/sign-up";
         }
 
     }
     @GetMapping("/users/{id}/edit")
     public String editProfile(@PathVariable Long id, Model vModel){
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return"redirect:/login";
+        } else {
+            User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if(loggedInUser.getId() != id){
+                return"redirect:/";
+            }
+        }
         vModel.addAttribute("userExists",userExists);
         vModel.addAttribute("emailExists",emailExists);
+        vModel.addAttribute("passwordsMatch", passwordsMatch);
         vModel.addAttribute("user",users.findOne(id));
+        this.passwordsMatch = true;
+        this.emailExists = false;
+        this.userExists = false;
         return "users/edit";
     }
     @PostMapping("/users/{id}/edit")
@@ -59,6 +79,7 @@ public class UserController {
         User loggedInUser =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         this.userExists = users.findByUsername(username) != null && users.findByUsername(username).getId() != loggedInUser.getId();
         this.emailExists = users.findByEmail(email) != null && users.findByEmail(email).getId() != loggedInUser.getId();
+        this.passwordsMatch = confirmpassword.equals(newpassword);
         if(userExists || emailExists){
             return "redirect:/users/" + id + "/edit";
         }
@@ -72,7 +93,7 @@ public class UserController {
             users.save(user);
             return "redirect:/profile";
         } else {
-            return "redirect:/";
+            return "redirect:/users/" + id + "/edit";
         }
     }
 }
