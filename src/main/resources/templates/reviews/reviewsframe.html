@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head('All Reviews')">
-
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
-
 <div th:each="review : ${reviews}">
+    <style>
+        body{
+         background-color: #343a40;
+        }
+        .card-header{
+            background-color: #343a40;
+            color:lightblue;
+        }
+        .card-body{
+            background-color: #343a40;
+            color:lightblue;
+        }
+    </style>
 
-
-    <div class="container-fluid">
+    <div class="container">
         <div>
-            <div class="col-sm-6">
+            <div class="">
                 <div class="card">
                     <div class="card-header">
-                        <span th:text="'Posted By: ' + ${review.user.username}"></span>
+                        <span th:text="'Posted By:  ' + ${review.user.username}"></span>
                     </div>
-                    <div thclass="card-body">
-                        <a th:href="@{|/reviews/${review.id}/edit|}">
-                            <h1 class="card-title" th:text="${review.rating}"></h1></a>
+                    <div class="card-body">
+                        <!--<a th:href="@{|/reviews/${review.id}/edit|}">-->
+                            <h1 class="card-title" th:text="${review.rating}"></h1>
                         <p class="card-text" th:text="${review.body}"></p>
                     </div>
                 </div>
@@ -26,8 +36,6 @@
         </div>
     </div>
 </div>
-<footer th:replace="partials :: footer"/>
-
 </body>
 
 </html>

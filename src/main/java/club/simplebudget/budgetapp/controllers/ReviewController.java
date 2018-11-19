@@ -23,8 +23,17 @@ public class ReviewController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/reviews")
+    @GetMapping("/reviews-frame")
     public String reviews(Model model){
+
+        model.addAttribute("reviews",reviewRepository.findAll());
+        return "reviews/reviewsframe";
+    }
+
+    @GetMapping("/reviews")
+    public String reviewsIndex(Model model){
+        model.addAttribute("reviews",reviewRepository.findAll());
+        return "reviews/index";
         if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("reviews",reviewRepository.findAll());
@@ -39,6 +48,7 @@ public class ReviewController {
             model.addAttribute("loggedinuser", anon);
             return "reviews/index";
         }
+
     }
 //    This is for indvidual reviews which we decided not needed
 //    @GetMapping("/reviews/{id}")
