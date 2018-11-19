@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class ReviewController {
     @Autowired
@@ -23,8 +25,20 @@ public class ReviewController {
 
     @GetMapping("/reviews")
     public String reviews(Model model){
-        model.addAttribute("reviews",reviewRepository.findAll());
-        return "reviews/index";
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("reviews",reviewRepository.findAll());
+            if(loggedInUser != null) {
+                model.addAttribute("loggedinuser", loggedInUser);
+            }
+            return "reviews/index";
+        } else {
+            model.addAttribute("reviews",reviewRepository.findAll());
+            User anon = new User();
+            anon.setId(0);
+            model.addAttribute("loggedinuser", anon);
+            return "reviews/index";
+        }
     }
 //    This is for indvidual reviews which we decided not needed
 //    @GetMapping("/reviews/{id}")
@@ -34,6 +48,11 @@ public class ReviewController {
 //    }
     @GetMapping("/reviews/create")
     public String createReviewsIndex(Model model){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(reviewRepository.findByUser_Id(loggedInUser.getId()) != null) {
+            Review UserReview = reviewRepository.findByUser_Id(loggedInUser.getId());
+            return "redirect:/reviews/" + UserReview.getId() + "/edit";
+        }
         model.addAttribute("review",new Review());
         return "reviews/create";
 }
