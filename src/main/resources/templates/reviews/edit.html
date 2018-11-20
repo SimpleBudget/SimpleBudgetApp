@@ -20,6 +20,6 @@
     </div>
     <input type="submit"/><br/><br/><input type="submit" value="Delete"  th:formaction="@{'/reviews/' + ${review.id} + '/delete'}" th:formmethod="post"/>
 </form>
-<footer th:replace="partials :: footer"/>
+<footer th:replace="footer2 :: footer"/>
 </body>
 </html>
