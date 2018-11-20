@@ -104,14 +104,14 @@ public class AccountController {
         if(!savings.equals("")) {
             savingsDouble = Double.parseDouble(savings);
         }
-        if(billRepository.findByUserAndName(loggedInUser,"What you want to save") == null && !savings.equals("")){
+        if(billRepository.findByUserAndName(loggedInUser,"Savings") == null && !savings.equals("")){
             Bill savingsBill = new Bill();
-            savingsBill.setName("What you want to save");
+            savingsBill.setName("Savings");
             savingsBill.setAmount(savingsDouble);
             savingsBill.setUser(loggedInUser);
             billRepository.save(savingsBill);
-        } else if(billRepository.findByUserAndName(loggedInUser,"What you want to save") != null && !savings.equals("")){
-            Bill savingsBill = billRepository.findByUserAndName(loggedInUser,"What you want to save");
+        } else if(billRepository.findByUserAndName(loggedInUser,"Savings") != null && !savings.equals("")){
+            Bill savingsBill = billRepository.findByUserAndName(loggedInUser,"Savings");
             savingsBill.setAmount(savingsDouble);
             billRepository.save(savingsBill);
         }

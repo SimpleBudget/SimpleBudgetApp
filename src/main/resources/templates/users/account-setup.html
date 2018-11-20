@@ -15,7 +15,7 @@
     <form th:action="|/bill/${bill.id}|" th:method="post">
         <div class="form-row">
         <div class="form-group col-md-8">
-    <h5 th:text="${bill.name} + ': ' + ${bill.amount}"></h5>
+    <h5 th:text="${bill.name} + ': ' + '$' + ${#numbers.formatDecimal(bill.amount,1,2)}"></h5>
         </div>
         <div class="form-group col-md-4">
         <input style="background-color: black; color: #44a8c5; float: right;" type="submit"  value="Remove"/>
@@ -41,9 +41,9 @@
 <form th:action="@{/account-setup}" method="POST">
     <div class="form-group">
         <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
-        <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income/4}"/>
-        <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income/2}"/>
-        <input th:if="${account != null &amp;&amp; account.option == 3}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${account.income}"/>
+        <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${#numbers.formatDecimal(account.income/4,1,2)}"/>
+        <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${#numbers.formatDecimal(account.income/2,1,2)}"/>
+        <input th:if="${account != null &amp;&amp; account.option == 3}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${#numbers.formatDecimal(account.income,1,2)}"/>
         <input th:if="${account == null}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"/>
 
         <ul class="list-group list-group-flush">
@@ -77,11 +77,11 @@
             </div></li>
         </ul>
     </div>
-    <div class="form-group">
-        <label for="savingsoverall">How much do you current have saved</label>
-        <input th:if="${account != null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here" th:value="${account.savings}"/>
-        <input th:if="${account == null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here"/>
-    </div>
+    <!--<div class="form-group">-->
+        <!--<label for="savingsoverall">How much do you current have saved</label>-->
+        <!--<input th:if="${account != null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here" th:value="${account.savings}"/>-->
+        <!--<input th:if="${account == null}" class="form-control" id="savingsoverall" name="savingsoverall" placeholder="This is optional.. If you would like us to track your savings enter it here"/>-->
+    <!--</div>-->
     <input style="background-color: black; color: #44a8c5;" value="Calculate my Budget!!" type="submit" />
 </form>
 </div>
