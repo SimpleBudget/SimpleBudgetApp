@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review, Long> {
     Review findByUser_Id(long user_id);
+    List<Review> findTop3ByOrderByIdDesc();
 }

@@ -2,6 +2,7 @@ package club.simplebudget.budgetapp.controllers;
 
 
 import club.simplebudget.budgetapp.repositories.PostRepository;
+import club.simplebudget.budgetapp.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @GetMapping("/")
-    public String homepage(){
+    public String homepage(Model model){
+        model.addAttribute("reviews",reviewRepository.findTop3ByOrderByIdDesc());
         return "homepage";
     }
     @GetMapping("/faq")
