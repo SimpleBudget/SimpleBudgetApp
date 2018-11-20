@@ -2,12 +2,18 @@
 
 /* color and transition variables */
 :root {
-    --primary-color: #66ccff;
-    --primary-color-hover: #447ea0;
+    --primary-color: #f4f4f4;
+    --primary-color-hover: #f4f4f4;
     --secondary-color: #f4f4f4;
-    --secondary-color-hover: #011627;
-    --btn-color: #2ec4b6;
+    --secondary-color-hover: #bacfe3;
+    --btn-color: #f4f4f4;
     --easeOut: all 0.25s ease-out;
+}
+h2{
+    color: #bacfe3;
+}
+p{
+    color: #bacfe3;
 }
 
 body, html {
@@ -16,10 +22,14 @@ body, html {
 
 body {
     font-family: "Montserrat", sans-serif;
-    background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");
-    background-size: cover;
+    /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
 
+    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
 }
+
+
 
 label {
     font-family: "Lato", sans-serif;
@@ -41,7 +51,7 @@ label {
 
 
 .nameHighlight {
-    background-color: rgba(102, 204, 255, 0.85);
+    background-color: rgba(244, 244, 244, 0.85);
     border-radius: 3px;
     padding: .15em;
     color: white;
@@ -96,23 +106,31 @@ label {
     color: var(--btn-color);
     transition: var(--easeOut);
 }
+i {
+    --primary-color: #f4f4f4;
+    --primary-color-hover: #f4f4f4;
+    --secondary-color: #f4f4f4;
+    --secondary-color-hover: #bacfe3;
+    --btn-color: #f4f4f4;
+    --easeOut: all 0.25s ease-out;
+}
 
-/*!* ====== mobile view ====== *!*/
-/*@media screen and (max-width: 580px) {*/
+/* ====== mobile view ====== */
+@media screen and (max-width: 580px) {
 
-    /*body, html {*/
-        /*height: 100%;*/
-    /*}*/
+    body, html {
+        height: 100%;
+    }
 
-    /*.grid-profile {*/
-        /*grid-template-areas:*/
-                /*"brittany"*/
-                /*"hunter"*/
-                /*"patrick";*/
-        /*grid-template-columns: 1fr;*/
-    /*}*/
+    .grid-profile {
+        grid-template-areas:
+                "brittany"
+                "hunter"
+                "patrick";
+        grid-template-columns: 1fr;
+    }
 
-    /*.footer {*/
-        /*position: absolute;*/
-    /*}*/
-/*}*/
+    .footer {
+        position: absolute;
+    }
+}
