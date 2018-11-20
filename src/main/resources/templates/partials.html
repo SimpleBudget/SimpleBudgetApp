@@ -26,8 +26,8 @@
     <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
         <a class="nav-item nav-link active" href="/">Home</a>
         <a class="nav-item nav-link active " href="/posts">Community</a>
-        <a th:href="'/sign-up'" class="nav-item nav-link ">Sign Up!</a>
-        <a th:href="'/login'" class="nav-item nav-link ">Login</a>
+        <a th:href="'/sign-up'" class="nav-item nav-link "><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a th:href="'/login'" class="nav-item nav-link "><i class="fas fa-sign-in-alt"></i>  Login</a>
     </div>
     <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET">
         <input class="search-custom" type="search" name="search"/>
