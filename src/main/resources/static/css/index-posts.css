@@ -1,4 +1,11 @@
+body, html {
+    height: 100%;
+}
+
 body {
+    font-family: "Montserrat", sans-serif;
+    /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
+
     background: url("../img/stockbgimage.jpg") no-repeat center;
     background-size: cover;
     height: 100%;
