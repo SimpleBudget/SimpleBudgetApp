@@ -5,11 +5,15 @@ body {
 }
 
 #main-card {
-    background-color: black;
-    color: #eae0c8;
+    background-color: #343a40;
+    color: white;
     width: 50%;
     height: 25%;
     margin: 125px auto 500px auto;
     padding: 100px
+}
 
+.btn {
+    background-color: white;
+    color: #343a40;
 }

@@ -8,31 +8,51 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="card text-center" id="main-card">
+<div class="card" id="main-card">
 <h1>Create an account</h1>
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <div class="form-group">
+    <div class="form-row">
+        <div class="form-group col-sm-6">
     <label for="username">Username</label>
-    <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="username" name="username" th:field="*{username}" th:required="required"/>
+        </div>
+        <div class="form-group col-sm-6">
+        <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="username" name="username" th:field="*{username}" th:required="required"/>
     </div>
-    <div class="form-group">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
     <label for="email">Email</label>
-    <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="email" type="email" name="email" th:field="*{email}" th:required="required" />
+        </div>
+        <div class="form-group col-sm-6">
+            <input class="form-control" pattern=".*\S+.*" title="username cannot be blank" id="email" type="email" name="email" th:field="*{email}" th:required="required" />
     </div>
-    <div class="form-group">
+       </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
     <label for="password">Password</label>
-    <input class="form-control" id="password" type="password" th:field="*{password}" th:required="required"/>
+        </div>
+        <div class="form-group col-sm-6">
+            <input class="form-control" id="password" type="password" th:field="*{password}" th:required="required"/>
     </div>
-    <div class="form-group">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
         <label for="confirmpassword">Confirm Password</label>
+        </div>
+        <div class="form-group col-sm-6">
         <input class="form-control" id="confirmpassword" name="confirmpassword" type="password" th:required="required" />
     </div>
-    <div class="form-group">
-        <label for="phonenumber">Phone Number</label>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="phonenumber">Phone Number</label>
+        </div>
+        <div class="form-group col-sm-6">
         <input class="form-control" id="phonenumber" type="tel" placeholder="Phone number is optional." th:field="*{phonenumber}" />
     </div>
+    </div>
 
-    <input value="Sign me up!" type="submit" />
+    <input class="btn" value="Sign up" type="submit" />
 </form>
 <div th:if="${userExists  &amp;&amp; !emailExists}" id="usernameError" class="modal fade" role="dialog">
     <div class="modal-dialog">
