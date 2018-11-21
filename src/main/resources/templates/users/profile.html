@@ -27,7 +27,7 @@
         <!--<p th:if="${account != null}" id="overallSavings" th:text="${account.getSavings()}"></p>-->
     <!--</div>-->
 
-<h3 th:if="${bills.size() >= 1}">Your bills</h3>
+<h4 th:if="${bills.size() >= 1}">Your bills</h4>
 <div th:each="bill : ${bills}">
     <div class="form-row">
         <div class="form-group col-md-8">
