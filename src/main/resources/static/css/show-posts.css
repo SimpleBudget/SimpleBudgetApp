@@ -5,12 +5,30 @@ body {
 }
 
 #main-card {
-    background-color: black;
-    color: #44a8c5;
+    /*background-color: black;*/
+    /*color: #44a8c5;*/
     width: 50%;
     height: 100%;
 
     margin: 50px auto 500px auto;
-    padding: 20px;
+    padding: 0;
 
+}
+.card{
+    background-color: #333a41;
+    color: white;
+}
+.btn{
+    margin-bottom: .5%;
+    margin-left: .5%;
+    background-color: white;
+    color:black;
+}
+.card-header{
+    margin-top: 1%;
+}
+@media screen and (min-width: 569px) {
+    .custom-width{
+        width: 15% !important;
+    }
 }
