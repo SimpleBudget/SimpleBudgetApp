@@ -7,7 +7,8 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="card text-center" id="main-card">
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap text-center w-100" id="main-card">
 <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
     <div class="form-group">
     <label for="title">Title:</label>
@@ -21,6 +22,7 @@
     </div>
     <input type="submit"/>
 </form>
+</div>
 </div>
 <footer th:replace="footer2 :: footer"/>
 </body>

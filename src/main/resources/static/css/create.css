@@ -9,7 +9,6 @@ body {
 
 
 
-
 #main-card {
     background-color: black;
     color: #eae0c8;
@@ -18,4 +17,9 @@ body {
     margin: 150px auto 500px auto;
     padding: 100px
 
+}
+@media screen and (min-width: 569px){
+    .w-100{
+        width: 50% !important;
+    }
 }
