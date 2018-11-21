@@ -9,13 +9,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <th:block th:include="partials :: navbar"></th:block>
 </nav>
-<div class="card" id="main-card">
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap w-100" id="main-card">
     <div class="card-header">
         <span th:text="'Posted By: ' + ${Post.user.username}"></span>
     </div>
     <div class="card-body">
-        <h1 class="card-title" th:text="${Post.title}"></h1>
-        <p class="card-text" th:text="${Post.body}"></p>
+        <h1 class="card-title d-flex flex-nowrap" th:text="${Post.title}"></h1>
+        <p class="card-text d-flex flex-nowrap" th:text="${Post.body}"></p>
     </div>
 <form  style="display: none;" th:action='|/comment/${Post.id}|' th:method='post' sec:authorize='isAuthenticated()' id="commentForm">
     <div class='form-group'>
@@ -24,19 +25,19 @@
            <textarea class='form-control' rows='4' cols='50' id="comment" name="commentbody"></textarea>
             <br/>
             </div>
-       <input type='submit'/> </div> </form>
-<a th:if="${loggedInUser.id == Post.user.id}" th:href="@{'/posts/' + ${Post.id} + '/edit'}"><button>Edit Post</button><br/></a>
-<button style="width: 15%" sec:authorize='isAuthenticated()' id="show">Comment</button>
+       <input class="btn btn-outline-secondary w-50 custom-width" type='submit'/> </div> </form>
+<a th:if="${loggedInUser.id == Post.user.id}" th:href="@{'/posts/' + ${Post.id} + '/edit'}"><button class="btn btn-outline-secondary w-50 custom-width">Edit Post</button><br/></a>
+<button class="btn btn-outline-secondary w-50 custom-width" sec:authorize='isAuthenticated()' id="show">Comment</button>
 <ul>
-    <li style="list-style-type: none; background-color: black;" th:each="comment : ${Post.comments}">
-        <div class="card" style="background-color: black">
-            <div class="card-header" style="background-color: black;">
+    <li style="list-style-type: none;" th:each="comment : ${Post.comments}">
+        <div class="card d-flex flex-nowrap">
+            <div class="card-header d-flex flex-nowrap">
                 <span th:text="'Posted By: ' + ${comment.user.username}"></span>
             </div>
-            <div class="card-body" style="background-color: black;">
-                <p class="card-text" th:text="${comment.commentbody}"></p>
+            <div class="card-body">
+                <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}"></p>
             </div>
-            <button style="width: 15%" th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply">Reply</button> <br/> <button style="width: 15%" th:if="${loggedInUser.id == comment.user.id}" class="editComment">Edit</button>
+            <button  th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply btn btn-outline-secondary w-50 custom-width">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment btn btn-outline-secondary w-50 custom-width mt-0">Edit</button>
             <form th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
                 <div class='form-group'>
                     <div class='form-group'>
@@ -44,7 +45,7 @@
                         <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}" required="required"></textarea>
                         <br/>
                     </div>
-                    <input type='submit'/> <br/> <input type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+                    <input class="btn btn-outline-secondary w-50 custom-width" type='submit'/> <br/> <input class="btn btn-outline-secondary w-50 custom-width" type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
 
                 </div>
 
@@ -56,22 +57,22 @@
                         <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply" required="required"></textarea>
                         <br/>
                     </div>
-                    <input type='submit'/>
+                    <input class="btn btn-outline-secondary w-50 custom-width" type='submit'/>
 
                 </div>
 
             </form>
             <ul>
                 <li style="list-style-type: none;" th:each="comment : ${comment.comments}">
-                    <div class="card" style="background-color: black;">
-                        <div class="card-header">
+                    <div class="card d-flex flex-nowrap">
+                        <div class="card-header d-flex flex-nowrap">
                             <span th:text="'Posted By: ' + ${comment.user.username}"></span>
                         </div>
                         <div class="card-body">
-                            <p class="card-text" th:text="${comment.commentbody}"></p>
+                            <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}"></p>
                         </div>
                     </div>
-                    <button th:if="${loggedInUser.id == comment.user.id}" class="editReply">Edit</button>
+                    <button th:if="${loggedInUser.id == comment.user.id}" class="editReply btn btn-outline-secondary w-50 custom-width">Edit</button>
                     <form  th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editReplyForm">
                         <div class='form-group'>
                             <div class='form-group'>
@@ -79,7 +80,7 @@
                                 <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}" required="required"></textarea>
                                 <br/>
                             </div>
-                            <input type='submit'/> <br/> <input type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+                            <input class="btn btn-outline-secondary w-50 custom-width" type='submit'/> <br/> <input class="btn btn-outline-secondary w-50 custom-width" type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
 
                         </div>
 
@@ -89,6 +90,7 @@
         </div>
     </li>
 </ul>
+</div>
 </div>
 
 
