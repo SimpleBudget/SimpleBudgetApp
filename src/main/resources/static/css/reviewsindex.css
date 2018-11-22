@@ -1,0 +1,12 @@
+.count{
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+body {
+    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}

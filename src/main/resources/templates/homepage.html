@@ -19,11 +19,33 @@
     <h3> Everyone has money, however not everyone is good at budgeting the money they have. Whether you are already financially stable and want to maintain that or if you just want to take the steps to become more budget savy then Simple Budget is for you.</h3>
 </div>
 <section id="plx">
-    <div class="container">
-        <div class="wtitle text-center text-light">
+    <div class="container-fluid">
+        <div class="text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div th:each="review : ${reviews}">
+                        <div class="col-sm-6">
+                            <div class="card text-center" style="width: 19rem;">
+                                <div class="card-header">
+                                    Our Latest Reviews
+                                    <span th:text="'Posted By: ' + ${review.user.username}"></span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="'This user gave us a '+${review.rating}+' out of 5!'"></h5>
+                                    <p class="card-text" th:text="${review.body}"></p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    Simple Budget
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
 <footer th:replace="partials :: footer"/>
 </body>
 </html>
