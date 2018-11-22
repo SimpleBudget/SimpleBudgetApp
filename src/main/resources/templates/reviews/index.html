@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('All Reviews')">
+<head>
+    <th:block th:include="partials ::  head('All Reviews')"/>
+    <!--<link rel="stylesheet" th:href="@{/css/leaveareview.css}" />-->
     <link rel="stylesheet" th:href="@{/css/reviewsindex.css}" />
-    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <!--<link rel="stylesheet" th:href="@{/css/login.css}" />-->
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="container-fluid mr-auto">
-<div class="row">
+    <div class="row">
 <div th:each="review : ${reviews}">
-        <div class="col-sm-2">
-            <div class="card text-center" style="width: 15rem;">
-                <div class="card-header">
+        <div class="col-sm-6">
+<div class="card text-center" style="width: 25em;" id="main-card">
+
                     <span th:text="'Posted By: ' + ${review.user.username}"></span>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title" th:text="'This user gave us a '+${review.rating}+' out of 5!'"></h5>
-                    <p class="card-text" th:text="${review.body}"></p>
-                </div>
-                <div class="card-footer text-muted">
-                    Simple Budget
-                </div>
+    <hr/>
+                    <h3 th:text="${review.user.username} + ' gave us a '+${review.rating}+' out of 5!'"></h3>
+                    <h4 th:text="${review.body}"></h4>
+        <hr/>
+                    <div>
+                        <p>Simple Budget</p>
+                    </div>
             </div>
         </div>
-    <br/>
+
     </div>
 </div>
 </div>
+
+
+
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>
