@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Edit a review')">
+<head>
+    <th:block th:include="partials :: head('Edit a review')"/>
+    <link rel="stylesheet" th:href="@{/css/leaveareview.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+<div class="card" id="main-card">
+    <h2>Edit your Review</h2>
 <form th:object="${review}" th:action="@{'/reviews/' + ${review.id} + '/edit'}" th:method="post">
     <div class="slidecontainer">
         <label for="rating">Rating</label>
@@ -20,6 +24,7 @@
     </div>
     <input type="submit"/><br/><br/><input type="submit" value="Delete"  th:formaction="@{'/reviews/' + ${review.id} + '/delete'}" th:formmethod="post"/>
 </form>
+</div>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>

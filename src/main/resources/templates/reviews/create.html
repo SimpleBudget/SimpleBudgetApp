@@ -1,34 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Create a review')">
+<head>
+    <th:block th:include="partials :: head('Create a review')"/>
+    <link rel="stylesheet" th:href="@{/css/leaveareview.css}" />
 </head>
 <body>
-<style>
-    span{
-        color: #bacfe3;
-    }
-    label{
-        color: #bacfe3;
-    }
-    p{
-        color: #bacfe3;
-    }
-
-    body, html {
-        height: 100%;
-    }
-
-    body {
-        font-family: "Montserrat", sans-serif;
-        /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
-
-        background: url("../img/stockbgimage.jpg") no-repeat center;
-        background-size: cover;
-        height: 100%;
-    }
-
-</style>
 <nav th:replace="partials :: navbar"/>
+<div class="card" id="main-card">
+    <h2>Leave a Review/h2>
 <form th:action="@{'/reviews/create'}" method="post" th:object="${review}">
     <div class="slidecontainer text-center">
         <label for="rating">Rating</label>
@@ -45,6 +24,7 @@
     </div>
     <input  class= "text-center" type="submit"/>
 </form>
+</div>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>
