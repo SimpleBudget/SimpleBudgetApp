@@ -9,7 +9,7 @@
 <div class="container-fluid mr-auto">
 <div class="row">
 <div th:each="review : ${reviews}">
-        <div class="col-sm-2">
+        <div class="col-sm-4">
             <div class="card text-center" style="width: 15rem;">
                 <div class="card-header">
                     <span th:text="'Posted By: ' + ${review.user.username}"></span>

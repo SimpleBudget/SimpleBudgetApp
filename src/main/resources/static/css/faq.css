@@ -1,0 +1,38 @@
+
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+
+    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background-size: cover;
+
+}
+.card-body{
+    color:white;
+    }
+    h2{
+    color:#eae0c8
+    }
+    i{
+    color:#eae0c8;
+    }
+
+.btn-link{
+    color:#eae0c8;
+}
+/*@media screen and (max-width: 580px) {*/
+
+    /*body, html {*/
+        /*height: 100%;*/
+        /*width: 750px;*/
+    /*}*/
+
+
+    /*.footer {*/
+        /*position: absolute;*/
+    /*}*/
+/*}*/
