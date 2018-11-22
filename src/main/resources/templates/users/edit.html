@@ -11,27 +11,52 @@
 <div class="container text-center;" id="main-card">
     <div class ="row">
         <div class="col l12">
-            <h3>Edit Profile</h3>
+            <h2>Edit Profile</h2>
             <div class = "col l8 offset-l2">
                 <form  th:object="${user}" th:action="@{|/users/${user.id}/edit|}" th:method="POST" >
-                    <label for="username">Username</label>
-                    <input class="form-control disa" id="username" name="username" pattern=".*\S+.*" title="username cannot be blank" th:field="*{username}" />
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                    <h5 for="username">Username</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input class="form-control disa" id="username" name="username" pattern=".*\S+.*" title="username cannot be blank" th:field="*{username}" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                    <h5 for="email">Email</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input class="form-control" id="email" name="email" pattern=".*\S+.*" title="email cannot be blank" type="email" th:field="*{email}" required="required" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                            <h5 for="phonenumber">Phone Number</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input class="form-control" placeholder="Phone number is for notifications." id="phonenumber" th:field="*{phonenumber}" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                    <h5 for="newpassword">New Password</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="password" id="newpassword" class="form-control" name ="newpassword" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                            <h5 for="confirmpassword">Confirm New Password</h5>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="password" id="confirmpassword" class="form-control" name ="confirmpassword" />
+                        </div>
+                    </div>
+                <br/>
 
-                    <label for="email">Email</label>
-                    <input class="form-control" id="email" name="email" pattern=".*\S+.*" title="email cannot be blank" type="email" th:field="*{email}" required="required" />
-
-                    <label for="phonenumber">Phone Number</label>
-                    <input class="form-control" id="phonenumber" th:field="*{phonenumber}" />
-
-
-
-                    <label for="newpassword">New Password</label>
-                    <input type="password" id="newpassword" class="form-control" name ="newpassword" />
-
-                    <label for="confirmpassword">Confirm New Password</label>
-                    <input type="password" id="confirmpassword" class="form-control" name ="confirmpassword" />
-
-                    <input  class="btn-danger" type="submit" />
+                    <input  class="btn" type="submit" />
                 </form>
             </div>
                 <div th:if="${userExists  &amp;&amp; !emailExists}" id="usernameError" class="modal fade" role="dialog">

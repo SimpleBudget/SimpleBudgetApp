@@ -6,11 +6,16 @@ body {
 
 #main-card {
 
-    background-color: black;
-    color: #eae0c8;
-    width: 35%;
+    background-color: #343a40;
+    color: white;
+    width: 50%;
     height: 25%;
     margin: 75px auto 500px auto;
-    padding: 100px
+    padding: 25px
 
+}
+
+.btn {
+    background-color: white;
+    color: #343a40;
 }
