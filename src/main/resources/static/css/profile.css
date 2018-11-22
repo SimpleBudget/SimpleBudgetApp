@@ -10,7 +10,7 @@ h1 {
     color: white;
 }
 
-#main-card {
+.main-card {
     border-radius: 20px;
     width: 50%;
     margin: 50px auto 0 auto;
@@ -29,16 +29,19 @@ h1 {
 }
 
 
-#piechart {
-    width: 50%;
-    height: 500px;
-    margin: 0 auto;
-    color: #44a8c5;
-}
+/*#piechart {*/
+    /*width: 50%;*/
+    /*height: 500px;*/
+    /*margin: 50px auto 0 auto;*/
+    /*color: #44a8c5;*/
+/*}*/
 
 .pchartclass {
     border-radius: 20px;
-
+    width: 50%;
+    height: 500px;
+    margin: 0 3.125em 0 10.938em;
+    color: #44a8c5;
 }
 
 * {

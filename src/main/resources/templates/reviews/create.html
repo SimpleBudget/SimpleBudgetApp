@@ -7,7 +7,7 @@
 <body>
 <nav th:replace="partials :: navbar"/>
 <div class="card" id="main-card">
-    <h2>Leave a Review/h2>
+    <h2>Leave a Review</h2>
 <form th:action="@{'/reviews/create'}" method="post" th:object="${review}">
     <div class="slidecontainer text-center">
         <label for="rating">Rating</label>

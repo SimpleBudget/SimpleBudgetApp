@@ -14,7 +14,7 @@
                 <span th:text="'Posted By: ' + ${post.user.username}"></span>
             </div>
             <div class="card-body">
-        <a th:href="@{'/posts/' + ${post.id}}"><h1 class="card-title" th:text="${post.title}"></h1></a>
+        <a style="color: white;" th:href="@{'/posts/' + ${post.id}}"><h1 class="card-title" th:text="${post.title}"></h1></a>
         <p class="card-text" th:text="${post.body}"></p>
             </div>
         </div>
