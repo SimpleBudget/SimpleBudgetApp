@@ -5,8 +5,8 @@ body {
 }
 
 #main-card {
-    background-color: black;
-    color: #44a8c5;
+    background-color: #343a40;
+    color: white;
     width: 50%;
     height: 25%;
     margin: 250px auto 500px auto;

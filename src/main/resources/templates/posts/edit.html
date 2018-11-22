@@ -10,6 +10,7 @@
 <div class="container-fluid">
 <div class="card d-flex flex-nowrap text-center w-100" id="main-card">
 <form th:object="${post}" th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="post">
+    <h2>Edit your Post</h2>
     <div class="form-group">
     <label for="title">Title:</label>
     <input class="form-control" id="title" pattern=".*\S+.*" title="title cannot be blank" th:field="*{title}" required="required"/>
