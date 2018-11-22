@@ -13,14 +13,14 @@
 <body>
 <nav th:fragment="navbar" class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark" style="margin:0; padding:0; list-style-type:none;">
     <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
-        <a class="navbar-brand" th:href="'/home'">
-            <span class="mr-1"><img th:src="@{/img/favicon.ico}" alt="" style="width: 26px; height: 30px;" /></span>
+        <a class="navbar-brand" th:href="'/'">
+            <span class="mr-1"><img th:src="@{/img/favicon.ico}" alt="" style="width: 35px; height: 35px;" /></span>
             Simple Budget
         </a>
     </div>
     <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
         <a class="navbar-brand" th:href="'/'">
-            <span class="mr-1"><img th:src="@{/img/favicon.ico}" alt="" style="width: 26px; height: 30px;" /></span>
+            <span class="mr-1"><img th:src="@{/img/favicon.ico}" alt="" style="width: 35px; height: 35px;" /></span>
             Simple Budget
         </a>
     </div>
@@ -28,23 +28,23 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
-        <a class="nav-item nav-link navlink-custom" href="/">Home</a>
-        <a class="nav-item nav-link navlink-custom " href="/posts">Community</a>
-        <a class="nav-item nav-link navlink-custom" href="/posts/create">Create Post</a>
-        <a class="nav-item nav-link navlink-custom" href="/account-setup">Set Up Account</a>
-        <a class="nav-item nav-link navlink-custom"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>
-        <a class="nav-item nav-link navlink-custom" href="/profile">Your Profile</a>
-        <a class="nav-item nav-link navlink-custom" href="/reviews/create">Leave a Review</a>
+    <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
+        <a class="nav-item nav-link active navlink-custom" href="/">Home</a>
+        <a class="nav-item nav-link active navlink-custom " href="/posts">Community</a>
+        <a class="nav-item nav-link active navlink-custom" href="/posts/create">Create Post</a>
+        <!--<a class="nav-item nav-link navlink-custom" href="/account-setup">Set Up Account</a>-->
+        <!--<a class="nav-item nav-link navlink-custom"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>-->
+        <a class="nav-item nav-link active navlink-custom" href="/profile">Your Profile</a>
+        <a class="nav-item nav-link active navlink-custom" href="/reviews/create">Leave a Review</a>
         <form th:action="@{/logout}" th:method="POST">
-            <button id="logoutBtn" type="submit" class="nav-item nav-link navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
     </div>
-    <div class="navbar-nav ml-auto" sec:authorize="isAnonymous()">
-        <a class="nav-item nav-link navlink-custom" href="/">Home</a>
-        <a class="nav-item nav-link navlink-custom" href="/posts">Community</a>
-        <a th:href="'/sign-up'" class="nav-item nav-link navlink-custom "><i class="fas fa-user-plus"></i> Sign Up</a>
-        <a th:href="'/login'" class="nav-item nav-link navlink-custom "><i class="fas fa-sign-in-alt"></i>  Login</a>
+    <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
+        <a class="nav-item nav-link active navlink-custom" href="/">Home</a>
+        <a class="nav-item nav-link active navlink-custom" href="/posts">Community</a>
+        <a th:href="'/sign-up'" class="nav-item nav-link active navlink-custom "><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a th:href="'/login'" class="nav-item nav-link active navlink-custom "><i class="fas fa-sign-in-alt"></i>  Login</a>
     </div>
     <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET">
         <input class="search-custom" type="search" name="search"/>
