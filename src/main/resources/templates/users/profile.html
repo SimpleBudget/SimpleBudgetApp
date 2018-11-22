@@ -7,16 +7,15 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div>
-
-<div class="card color-white" id="main-card">
-<h1 th:text="'Welcome, ' + ${user.username}"></h1>
+<div class="container-fluid">
+<div class="card color-white d-flex flex-nowrap w-75 main-card">
+<h2 class="d-flex" th:text="'Welcome, ' + ${user.username}"></h2>
     <div class="form-row">
-        <div class="form-group col-md-6">
-        <h5 th:if="${account != null}">Your monthly income</h5>
+        <div class="form-group col-sm-8">
+        <h4 class="d-flex flex-nowrap" th:if="${account != null}">Your monthly income</h4>
         </div>
-        <div class="form-group col-md-6">
-        <h5 style="float: right;" th:if="${account != null}" id="monthlyIncome" th:text="'$' + ${#numbers.formatDecimal(account.getIncome(),1,2)}"></h5>
+        <div class="form-group col-sm-4">
+        <h4 class="d-flex flex-nowrap" th:if="${account != null}" id="monthlyIncome" th:text="'$' + ${#numbers.formatDecimal(account.getIncome(),1,2)}"></h4>
         </div>
     </div>
     <hr/>
@@ -27,40 +26,42 @@
         <!--<p th:if="${account != null}" id="overallSavings" th:text="${account.getSavings()}"></p>-->
     <!--</div>-->
 
-<h4 th:if="${bills.size() >= 1}">Your bills</h4>
+<h3 th:if="${bills.size() >= 1}">Your bills</h3>
 <div th:each="bill : ${bills}">
     <div class="form-row">
-        <div class="form-group col-md-8">
-    <h5 th:text="${bill.name} +': '"></h5>
+        <div class="form-group col-sm-8">
+    <h4 class="d-flex flex-nowrap text-capitalize" th:text="${bill.name} +': '"></h4>
         </div>
-        <div class="form-group col-md-4">
-            <h5 style="float: right;" th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}"></h5>
-    <!--<p  style="display:none;" th:text="${bill.amount}"></p>-->
+        <div class="form-group col-sm-4">
+            <h4 class="d-flex flex-nowrap" th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}"></h4>
+            <p style="display:none;" class="billAmount" th:text="${bill.amount}"></p>
+            <p style="display:none;" class="billName" th:text="${bill.name}"></p>
+
         </div>
     </div>
 </div>
     <hr/>
     <div>
         <div class="form-row">
-            <div class="form-group col-md-8">
-        <h5 th:if="${billTotal > 0}">Total of your Bills</h5>
+            <div class="form-group col-sm-8">
+        <h4 class="d-flex flex-nowrap" th:if="${billTotal > 0}">Total of your bills:</h4>
             </div>
-            <div class="form-group col-md-4">
-        <h5 style="float: right;" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}"></h5>
+            <div class="form-group col-sm-4">
+        <h4 class="d-flex flex-nowrap" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}"></h4>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-8">
-        <h5 th:if="${billTotal > 0}">Money left over after your bills</h5>
+            <div class="form-group col-sm-8">
+        <h4 th:if="${billTotal > 0}">Money left over after your bills:</h4>
             </div>
-            <div class="form-group col-md-4">
-        <h5 style="float: right;" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}"></h5>
+            <div class="form-group col-sm-4">
+        <h4 class="d-flex flex-nowrap" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}"></h4>
             </div>
         </div>
-        <h2 th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h2>
-        <h2 th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h2>
-        <h2 th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal,1,2)}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h2>
-        <h2 th:if="${billTotal > 0}" id="spendAmount"></h2>
+        <h4 class="d-flex flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        <h4 class="d-flex flex-nowrap" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        <h4 class="d-flex flex-nowrap" th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal,1,2)}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        <h4 class="d-flex flex-nowrap" th:if="${billTotal > 0}" id="spendAmount"></h4>
 
 <a href="/account-setup"><button class="btn" th:if="${account == null}">Setup Budget!</button></a>
 <a href="/account-setup"><button class="btn" th:if="${account != null}">Edit Budget!</button></a>
@@ -71,16 +72,19 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script th:src="@{js/Chart.js}"></script>
-</div>
-<div class="pchartclass">
+<div id="piechartsize" class="pchartclass card d-flex flex-nowrap w-75">
 <div id="piechart"></div>
 </div>
-<div class="card" id="main-card1">
-    <h1>User information</h1>
-    <h2 th:text="${user.username}"></h2>
-    <h2 th:text="${user.email}"></h2>
-    <h2 th:text="${user.phonenumber}"></h2> <br/>
+    <!--TODO: Figure out why the info below doesn't look like the other info on mobile from main-card div-->
+<div class="card d-flex w-75" id="main-card1">
+    <div class="row">
+    <h2 class="d-flex  col-sm-12">User information</h2>
+    <h3 class="d-flex  col-sm-12" th:text="${user.username}"></h3>
+    <h3 class="d-flex  col-sm-12" th:text="${user.email}"></h3>
+    <h3 class="d-flex  col-sm-12" th:text="${user.phonenumber}"></h3> <br/>
     <a th:href="@{|/users/${#authentication.principal.id}/edit|}"><button class="btn">Edit Profile</button></a>
+    </div>
+</div>
 </div>
 </body>
 <footer th:replace="footer2 :: footer"/>
