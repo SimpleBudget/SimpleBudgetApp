@@ -7,6 +7,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+<div class="container-fluid">
     <div th:each="post : ${posts}">
         <div class="card text-center" id="main-card">
             <div class="card-header">
@@ -19,6 +20,7 @@
         </div>
         <br/>
     </div>
+</div>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>
