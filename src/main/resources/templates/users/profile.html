@@ -8,7 +8,7 @@
 <body>
 <nav th:replace="partials :: navbar"/>
 <div class="container-fluid">
-<div class="card color-white d-flex flex-nowrap w-75" id="main-card">
+<div class="card color-white d-flex flex-nowrap w-75 main-card">
 <h2 class="d-flex" th:text="'Welcome, ' + ${user.username}"></h2>
     <div class="form-row">
         <div class="form-group col-sm-8">
@@ -72,12 +72,12 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script th:src="@{js/Chart.js}"></script>
-<div class="pchartclass d-flex flex-nowrap w-75">
+<div id="piechartsize" class="pchartclass card d-flex flex-nowrap w-75">
 <div id="piechart"></div>
 </div>
     <!--TODO: Figure out why the info below doesn't look like the other info on mobile from main-card div-->
 <div class="card d-flex w-75" id="main-card1">
-    <div class="row w-75">
+    <div class="row">
     <h2 class="d-flex  col-sm-12">User information</h2>
     <h3 class="d-flex  col-sm-12" th:text="${user.username}"></h3>
     <h3 class="d-flex  col-sm-12" th:text="${user.email}"></h3>
