@@ -3,11 +3,14 @@
 body, html {
     height: 100%;
 }
+.footer{
+    position: absolute;
+}
 
 body {
     font-family: "Montserrat", sans-serif;
-
-    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background-color: #1E3042;
+    /*background: url("../img/stockbgimage.jpg")  center;*/
     background-size: cover;
 
 }
@@ -22,9 +25,13 @@ body {
     }
 
 .btn-link{
+
     color:#eae0c8;
 }
-/*@media screen and (max-width: 580px) {*/
+hr{
+    color: #f4f4f4;
+}
+@media screen and (max-width: 660px) {
 
     /*body, html {*/
         /*height: 100%;*/
@@ -32,7 +39,7 @@ body {
     /*}*/
 
 
-    /*.footer {*/
-        /*position: absolute;*/
-    /*}*/
-/*}*/
+    .footer {
+        position: relative;
+    }
+}
