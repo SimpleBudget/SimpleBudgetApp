@@ -8,7 +8,7 @@
 <body>
 <nav th:replace="partials :: navbar"/>
 <div class="container-fluid">
-<div class="card d-flex flex-nowrap w-100" id="main-card">
+<div class="card d-flex flex-nowrap" id="main-card">
 <h1 class="d-flex flex-nowrap">Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
@@ -19,7 +19,7 @@
 </div>
 
 <form th:action="@{/login}" method="post">
-    <div class="form-row card-title d-flex flex-nowrap">
+    <div class="form-row">
         <div class="form-group col-sm-12 col-md-6">
     <label for="username">Username</label>
         <br/>
@@ -28,7 +28,7 @@
             <input class="form-control" id="username" name="username" type="text" />
         </div>
     </div>
-    <div class="form-row card-title d-flex flex-nowrap">
+    <div class="form-row">
         <div class="form-group col-sm-12 col-md-6">
             <label for="password">Password</label>
             <br/>

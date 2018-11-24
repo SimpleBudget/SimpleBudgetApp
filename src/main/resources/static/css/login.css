@@ -7,6 +7,26 @@ body {
     height: 100%;
 }
 
+
+
+#main-card {
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    margin: 150px auto 500px auto;
+    padding: 100px
+
+}
+
+.btn {
+    background-color: white;
+    color: #343a40;
+}
+
+label{
+    font-size: 1.2rem;
+}
 @media screen and (max-height: 415px){
     #main-card{
         width:100%;
@@ -26,39 +46,4 @@ body {
     #main-card {
         width: 100%;
     }
-}
-#main-card {
-    background-color: #343a40;
-    color: white;
-    width: 50% !important;
-    height: 25%;
-    margin: 150px auto 500px auto;
-    padding: 100px
-
-}
-
-.btn {
-    background-color: white;
-    color: #343a40;
-}
-@media screen and (max-width: 569px) {
-    #main-card {
-        width: 100%;
-    }
-    /*.custom-width{*/
-        /*margin: 150px auto 300px auto;*/
-        /*width: 15% !important;*/
-        /*padding: 100px;*/
-    /*}*/
-}
-
-@media screen and (max-width: 415px) {
-    #main-card {
-        width: 100%;
-    }
-    /*.custom-width{*/
-        /*margin: 150px auto 300px auto;*/
-        /*width: 15% !important;*/
-        /*padding: 100px;*/
-    /*}*/
 }
