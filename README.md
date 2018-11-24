@@ -18,7 +18,7 @@
     - [x] `Login` Button
     - [x] `About SB` button to about us page
     - [x] `Community/Post` to the community page
-    - [] see reviews
+    - [x] see reviews
     
     * _From the `SignUp` button..._
       - [x] Fields for Username, Password, Email, phone, and...
@@ -27,8 +27,8 @@
 ###### The experience now branches off into two directions, depending on what the user is wanting, to use the budget app or go to the community
 ### Budget App
  * Account Info
-    - [] Field for Saving / income
-    - [] Supplemental income
+    - [x] Field for Saving / income
+    - [x] Supplemental income
     * Login
       - [x] `Username` and `Password`
       - [x] Verifies username exists
