@@ -16,13 +16,13 @@
     <form th:action="|/bill/${bill.id}|" th:method="post">
         <div class="form-row">
         <div class="form-group col-sm-4 col-md-4">
-    <h5 th:text="${bill.name} + ': '"></h5>
+    <h5 class="text-capitalize" th:text="${bill.name} + ': '"></h5>
         </div>
             <div class="form-group col-sm-4 col-md-4">
                 <h5 th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}"></h5>
         </div>
         <div class="form-group col-sm-4 col-md-4">
-        <input class="btn" style="float: right;" type="submit"  value="Remove"/>
+        <input class="btn" type="submit"  value="Remove"/>
         </div>
         </div>
     </form>
@@ -32,27 +32,27 @@
 <div class="form-group">
     <form th:action="@{/addBill}" method="post">
         <div class="form-row">
-            <div class="form-group col-sm-12 col-md-8">
+            <div class="form-group col-sm-6 col-md-8">
             <label for="savings">Enter your monthly savings</label>
             </div>
-            <div class="form-group col-sm-12 col-md-4">
+            <div class="form-group col-sm-6 col-md-4">
             <input class="form-control" id="savings" name="savings" type="number"/>
             </div>
         </div>
         <h3 for="billname">Input your bills.. </h3>
         <div class="form-row">
-            <div class="form-group col-sm-12 col-md-8">
+            <div class="form-group col-sm-6 col-md-8">
                 <label for="billname">Enter the bill name here</label>
             </div>
-            <div class="form-group col-sm-12 col-md-4">
+            <div class="form-group col-sm-6 col-md-4">
             <input class="form-control" id="billname" name="billname"/>
             </div>
         </div>
             <div class="form-row">
-                <div class="form-group col-sm-12 col-md-8">
+                <div class="form-group col-sm-6 col-md-8">
         <label for="billamount">Enter the bill amount here</label>
                 </div>
-                <div class="form-group col-sm-12 col-md-4">
+                <div class="form-group col-sm-6 col-md-4">
                 <input class="form-control" id="billamount" name="billamount"/>
                 </div>
             </div>
@@ -62,10 +62,10 @@
 </div>
 <form th:action="@{/account-setup}" method="POST">
     <div class="form-row">
-        <div class="form-group col-sm-12 col-md-8">
+        <div class="form-group col-sm-6 col-md-8">
             <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
         </div>
-        <div class="form-group col-sm-12 col-md-4">
+        <div class="form-group col-sm-6 col-md-4">
 
         <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${#numbers.formatDecimal(account.income/4,1,2)}"/>
         <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" th:value="${#numbers.formatDecimal(account.income/2,1,2)}"/>
