@@ -11,7 +11,6 @@ h1 {
 }
 
 .main-card {
-    border-radius: 20px;
     width: 50%;
     margin: 50px auto 0 auto;
 
@@ -20,28 +19,24 @@ h1 {
     padding: 10px 50px 10px 50px;
 }
 #main-card1 {
-    border-radius: 20px;
     width: 50%;
     margin: 0 auto;
     background-color: #343a40;
     color: white;
-    padding: 100px
+    padding: 25px;
 }
 
 
-/*#piechart {*/
-    /*width: 50%;*/
-    /*height: 500px;*/
-    /*margin: 50px auto 0 auto;*/
-    /*color: #44a8c5;*/
-/*}*/
+#piechart {
+    width: 100%;
+    min-height: 450px;
+    margin: 0 auto;
+}
 
 .pchartclass {
-    border-radius: 20px;
-    width: 50%;
-    height: 500px;
-    margin: 0 3.125em 0 10.938em;
-    color: #44a8c5;
+    width: 100%;
+    min-height: 450px;
+    margin: 0 auto;
 }
 
 * {
@@ -64,6 +59,5 @@ hr {
     border-width: 1px;
     color: white;
 }
-
 
 
