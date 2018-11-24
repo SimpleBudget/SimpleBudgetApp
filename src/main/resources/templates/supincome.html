@@ -5,6 +5,8 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
+<link rel="stylesheet" th:href="@{/css/supincome.css}" />
+
 
 <div class="container text-center mt-4">
     <div>
@@ -20,28 +22,31 @@
                     <div id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
-                                <i class="far fa-question-circle"></i> I have more bills then expected this month, what should I do?
+                                <i class="far fa-question-circle"></i> I have to many bills, what should I do?
                             </button>
                         </h5>
                     </div>
                 </div>
+                <hr/>
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         When unexpected bills come up it puts stresses on everyone involved. We have come up with some ideas on how to meet the financial goals that you desire.
                     </div>
                 </div>
             </div>
+            <hr/>
             <!-- ===== question 2 ===== -->
             <div class="question2 questionLead">
                 <div class="accordion" id="accordionExample">
                     <div id="heading headingTwo">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
-                                <i class="far fa-question-circle"></i> Are there some ways to earn extra income with my car on the weekends?
+                                <i class="far fa-question-circle"></i> How can I use my car to earn passive income?
                             </button>
                         </h5>
                     </div>
                 </div>
+                <hr/>
                 <div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
                         Yes, Below are some apps that would be beneficial to learn more about to earn more income from driving people. These apps do not focus on food delivery and are mostly beneficial to others who wish to drive people only!
@@ -65,17 +70,19 @@
                     </div>
                 </div>
             </div>
+            <hr/>
             <!-- ===== question 3 ===== -->
             <div class="question2 questionLead">
                 <div class="accordion" id="accordionExample">
                     <div id="headingThree">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree">
-                                <i class="far fa-question-circle"></i> What if I rather just deliver items or food and deal with no people?
+                                <i class="far fa-question-circle"></i> How can I just deliver items only?
                             </button>
                         </h5>
                     </div>
                 </div>
+                <hr/>
                 <div id="collapseThree" class="collapse hide" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                         The following apps provide extra income to those who wish to not deal with people and only drop off food.Food delivery services let customers order items from local eateries and pay within the app. The apps have varying pay structures and incentives for drivers, so check the platform for details when you sign up. <br/>
@@ -104,6 +111,7 @@
                     </div>
                 </div>
             </div>
+            <hr/>
             <!-- ===== question 4 ===== -->
             <div class="question4 questionLead">
                 <div class="accordion" id="accordionExample">
@@ -115,6 +123,7 @@
                         </h5>
                     </div>
                 </div>
+                <hr/>
                 <div id="collapseFour" class="collapse hide mb-5" aria-labelledby="headingFour" data-parent="#accordionExample">
                     <div class="card-body">
                         There are still plenty of ways out there to earn extra income, some people find alot of luck on these following websites.<br/>
@@ -136,6 +145,10 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <br/>
+            <div class="container-fluid img-responsive">
+            <img src="../img/smalllogo50.png" alt="" class="img-responsive"/>
             </div>
         </section>
     </div>
