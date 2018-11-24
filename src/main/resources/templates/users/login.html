@@ -7,8 +7,9 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="card" id="main-card">
-<h1>Log In</h1>
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap" id="main-card">
+<h1 class="d-flex flex-nowrap">Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
@@ -19,25 +20,26 @@
 
 <form th:action="@{/login}" method="post">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-12 col-md-6">
     <label for="username">Username</label>
         <br/>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-12 col-md-6">
             <input class="form-control" id="username" name="username" type="text" />
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-12 col-md-6">
             <label for="password">Password</label>
             <br/>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-sm-12 col-md-6">
             <input class="form-control" id="password" name="password" type="password" />
     </div>
     </div>
     <input class="btn" type="submit" value="Log In" />
 </form>
+</div>
 </div>
 <footer th:replace="footer2 :: footer"/>
 </body>
