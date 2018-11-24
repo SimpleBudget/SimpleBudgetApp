@@ -18,22 +18,33 @@
             color:lightblue;
         }
     </style>
-
-    <div class="container">
-        <div>
-            <div class="">
-                <div class="card">
-                    <div class="card-header">
-                        <span th:text="'Posted By:  ' + ${review.user.username}"></span>
-                    </div>
-                    <div class="card-body">
-                        <!--<a th:href="@{|/reviews/${review.id}/edit|}">-->
-                            <h1 class="card-title" th:text="${review.rating}"></h1>
-                        <p class="card-text" th:text="${review.body}"></p>
+    <div class="container-fluid">
+        <div class="text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div th:each="review : ${reviews}">
+                        <div class="col-sm-6">
+                            <div class="card text-center" style="width: 19rem;" id="main-card">
+                                <div class="card-header  border-light">
+                                    Our Latest Reviews
+                                    <span th:text="'Posted By: ' + ${review.user.username}"></span>
+                                </div>
+                                <!--<hr/>-->
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="'This user gave us a '+${review.rating}+' out of 5!'"></h5>
+                                    <p class="card-text" th:text="${review.body}"></p>
+                                </div>
+                                <!--<hr/>-->
+                                <div class="card-footer border-light">
+                                    Simple Budget
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 </body>
