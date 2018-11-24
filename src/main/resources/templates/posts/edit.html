@@ -12,12 +12,12 @@
 <form th:object="${post}" th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="post">
     <h2>Edit your Post</h2>
     <div class="form-group">
-    <label for="title">Title:</label>
+    <label for="title">Title</label>
     <input class="form-control" id="title" pattern=".*\S+.*" title="title cannot be blank" th:field="*{title}" required="required"/>
     </div>
     <br/>
     <div class="form-group">
-    <label for="body">Body:</label>
+    <label for="body">Body</label>
     <textarea class="form-control" rows="8" cols="100" id="body" pattern=".*\S+.*" title="body cannot be blank" th:field="*{body}" required="required"/>
     </div>
     <input class="btn" type="submit"/><br/><br/><input class="btn" type="submit" value="Delete"  th:formaction="@{'/posts/' + ${post.id} + '/delete'}" th:formmethod="post"/>
