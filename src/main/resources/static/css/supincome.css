@@ -1,0 +1,37 @@
+
+
+body, html {
+    height: 100%;
+}
+.footer{
+    position: absolute;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #27354b;
+    /*background: url("../img/logohi.jpg") no-repeat  center;*/
+    background-size: cover;
+
+}
+.card-body{
+    color:white;
+}
+h2{
+    color:#eae0c8
+}
+i{
+    color:#eae0c8;
+}
+
+.btn-link{
+
+    color:#eae0c8;
+}
+ul {list-style-type:none;}
+/*div.picture{*/
+    /*background-image: url("../img/smalllogo.jpg");*/
+    /*background-size: cover;*/
+    /*background: no-repeat;*/
+    /*background: center;*/
+/*}*/
