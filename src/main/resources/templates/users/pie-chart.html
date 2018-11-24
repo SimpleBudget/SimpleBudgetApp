@@ -1,32 +1,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-
-            var data = google.visualization.arrayToDataTable([
-                ['Monthly Income', 'Expenses'],
-                ['Work',     11],
-                ['Eat',      2],
-                ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7]
-            ]);
-
-            var options = {
-                title: 'Monthly Income Broken Down'
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-            chart.draw(data, options);
+    <th:block th:include="partials :: head('Home | Simple Budget')"/>
+    <style>
+        .btn {
+            background-color: white;
+            color: #343a40;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+
+<a href="/profile"><button class="w-100 btn text-center">Back to Profile</button></a>
+<h4 class="d-flex pl-2 flex-nowrap" style="display: none!important;" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}"></h4>
+<div th:each="bill : ${bills}">
+<p style="display:none;" class="billAmount" th:text="${bill.amount}"></p>
+<p style="display:none;" class="billName" th:text="${bill.name}"></p>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    let moneyAfterBills = document.getElementById("moneyAfterBills");
+    let moneyAfterBillsNumber = parseFloat(moneyAfterBills.innerText.substring(1,moneyAfterBills.innerText.length-1));
+    let billNames = Array.from(document.getElementsByClassName("billName"));
+    let billAmounts = Array.from(document.getElementsByClassName("billAmount"));
+
+
+
+    dataArray = [
+        ['Monthly Income', 'Expenses'],
+        ['Left over after bills', moneyAfterBillsNumber],
+
+    ]
+    billNames.forEach((element,index)=>{
+        dataArray.push([billNames[index].innerText.charAt(0).toUpperCase() + billNames[index].innerText.slice(1), Number(billAmounts[index].innerText)],)
+    })
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(dataArray);
+
+        var options = {
+            width: $("#piechartsize").width(),
+            height: $("#piechartsize").height(),
+            title: 'Budget Broken Down',
+            is3D: true
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data,options);
+
+        $(window).resize(function(){
+            drawChart();
+        });
+
+    }
+
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+</script>
+<div id="piechartsize" style="min-width:800px" class="pchartclass pl-5 card w-100 h-100">
+<div id="piechart"></div>
+</div>
+<footer th:replace="footer2 :: footer"/>
 </body>
 </html>

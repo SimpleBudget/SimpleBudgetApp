@@ -34,18 +34,12 @@ function drawChart() {
 
     chart.draw(data,options);
 
-    function resizeChart () {
-        chart.draw(data, options);
-    }
-    if (document.addEventListener) {
-        document.getElementById("piechartsize").addEventListener('resize', resizeChart);
-    }
-    else if (document.attachEvent) {
-        document.getElementById("piechartsize").attachEvent('onresize', resizeChart);
-    }
-    else {
-        document.getElementById("piechartsize").resize = resizeChart;
-    }
+    $(window).resize(function(){
+        drawChart();
+    });
+
 }
+
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
