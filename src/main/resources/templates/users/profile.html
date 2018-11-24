@@ -72,13 +72,13 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script th:src="@{js/Chart.js}"></script>
-<div id="piechartsize" class="pchartclass pl-2 card d-flex w-75">
-<div id="piechart" class="pl-2"></div>
+<div th:if="${bills.size() >= 1}" id="piechartsize" class="pchartclass pl-2 card d-flex w-75">
+<div th:if="${bills.size() >= 1}" id="piechart" class="pl-2"></div>
 </div>
     <!--TODO: Figure out why the info below doesn't look like the other info on mobile from main-card div-->
 <div class="card d-flex w-75" id="main-card1">
     <div class="row mb-5">
-        <a href="/piechart"><button class="pl-2 btn mb-2 col-sm-12">Fullscreen Chart</button></a>
+        <a th:if="${bills.size() >= 1}" href="/piechart"><button th:if="${bills.size() >= 1}" class="pl-2 btn mb-2 col-sm-12">Fullscreen Chart</button></a>
     <h2 class="d-flex pl-2 col-sm-12">User information</h2>
     <h3 class="d-flex pl-2 col-sm-12" th:text="${user.username}"></h3>
     <h3 class="d-flex pl-2 col-sm-12" th:text="${user.email}"></h3>
