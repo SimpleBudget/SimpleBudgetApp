@@ -11,6 +11,8 @@
 }
 h2{
     color: #bacfe3;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px;
 }
 p{
     color: #bacfe3;
@@ -24,9 +26,14 @@ body {
     font-family: "Montserrat", sans-serif;
     /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
 
-    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    /*line-height: 1.19;*/
+    /*vertical-align: middle;*/
 }
 
 
@@ -49,7 +56,9 @@ label {
     background: url("https://s3.amazonaws.com/alumni.codeup.com/PatrickFisher.jpg");
 }
 
-
+#patrick {
+    margin-bottom: 3px;
+}
 .nameHighlight {
     background-color: rgba(244, 244, 244, 0.85);
     border-radius: 3px;
@@ -72,7 +81,7 @@ label {
     display: grid;
     margin: 4.5em auto;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
+    grid-gap: 1.5rem;
 }
 
 .footer {
@@ -89,8 +98,9 @@ label {
 }
 
 .lead {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-family: Montserrat;
+    font-weight: bold;
 }
 
 #icons {
@@ -132,5 +142,8 @@ i {
 
     .footer {
         position: absolute;
+    }
+    h2{
+        text-shadow: 1.25px 1.25px 1.25px;
     }
 }
