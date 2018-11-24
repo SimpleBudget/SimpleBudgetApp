@@ -18,7 +18,7 @@
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null}" id="monthlyIncome" th:text="'$' + ${#numbers.formatDecimal(account.getIncome(),1,2)}"></h4>
         </div>
     </div>
-    <hr/>
+    <hr th:if="${bills.size() >= 1}"/>
 
 
     <!--<h3  class="card-header" th:if="${account != null}">Your Current Savings</h3>-->
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-    <hr/>
+    <hr th:if="${bills.size() >= 1}"/>
     <div>
         <div class="form-row">
             <div class="form-group pl-2 col-sm-8">
@@ -58,6 +58,7 @@
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}"></h4>
             </div>
         </div>
+        <hr th:if="${bills.size() >= 1}"/>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal,1,2)}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
@@ -75,14 +76,13 @@
 <div th:if="${bills.size() >= 1}" id="piechartsize" class="pchartclass pl-2 card d-flex w-75">
 <div th:if="${bills.size() >= 1}" id="piechart" class="pl-2"></div>
 </div>
-    <!--TODO: Figure out why the info below doesn't look like the other info on mobile from main-card div-->
 <div class="card d-flex w-75" id="main-card1">
     <div class="row mb-5">
         <a th:if="${bills.size() >= 1}" href="/piechart"><button th:if="${bills.size() >= 1}" class="pl-2 btn mb-2 col-sm-12">Fullscreen Chart</button></a>
-    <h2 class="d-flex pl-2 col-sm-12">User information</h2>
-    <h3 class="d-flex pl-2 col-sm-12" th:text="${user.username}"></h3>
-    <h3 class="d-flex pl-2 col-sm-12" th:text="${user.email}"></h3>
-    <h3 class="d-flex pl-2 col-sm-12" th:text="${user.phonenumber}"></h3> <br/>
+    <h2 class="d-flex pl-2 col-sm-12 userInfo">User information</h2>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo" th:text="${user.username}"></h3>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo" th:text="${user.email}"></h3>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo" th:text="${user.phonenumber}"></h3> <br/>
     <a th:href="@{|/users/${#authentication.principal.id}/edit|}"><button class="btn ml-2 col-sm-12">Edit Profile</button></a>
     </div>
 </div>

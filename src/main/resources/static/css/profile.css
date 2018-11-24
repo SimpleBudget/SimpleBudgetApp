@@ -60,4 +60,14 @@ hr {
     color: white;
 }
 
+@media screen and (min-width: 319px) and (max-width: 376px){
+    .userInfo{
+        font-size: .76rem;
+    }
+}
 
+@media screen and (max-width: 415px) and (min-width: 410px){
+    .userInfo{
+        font-size: 1rem;
+    }
+}
