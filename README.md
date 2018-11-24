@@ -36,7 +36,7 @@
       - [x] Forwards to `Profile`  
         *  Profile
           - [x] Information about the user (username, email, phonenumber, post)
-          - [] `Notification` option, to notifiy of a reply to a thread
+          - [x] `Notification` option, enter phone number for notifications
          * Dashboard
              - [x] ~Ability to  edit current profile information
              - [x] Can update there budget savings/income information
@@ -45,7 +45,6 @@
     -[x] Be able to post to community
     -[x] No one can hijack or edit others post or comments
     -[x] Be able to reply to comments
-    -[] Be able to receive notification from selected thread
 #### Reviews
  * Reviews
  -[x] Be able to post a review and view review
