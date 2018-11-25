@@ -3,14 +3,16 @@ body {
     background-size: cover;
     height: 100%;
 }
-
+textarea.form-control {
+    height: 7em;
+}
 #main-card {
     background-color: #343a40;
     color: white;
     width: 50%;
     height: 25%;
-    margin: 250px auto 500px auto;
-    padding: 50px
+    margin: 5em auto 3em auto;
+    padding: 1em;
 
 }
 .btn {
