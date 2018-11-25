@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<nav th:replace="navbar2 :: navbar"></nav>
+<anav th:replace="navbar2 :: navbar"></anav>
 <div class="container-fluid">
 <div class="card d-flex flex-nowrap text-center w-100" id="main-card">
 <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
@@ -27,7 +27,8 @@
 </div>
 <br/>
 <br/>
-
+<div class="footer-bottom">
 <footer th:replace="footer2 :: footer"/>
+</div>
 </body>
 </html>
