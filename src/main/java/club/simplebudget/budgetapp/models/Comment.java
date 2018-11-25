@@ -11,8 +11,6 @@ public class Comment {
     private long id;
     @Column(nullable = false)
     private String commentbody;
-    @Column
-    private long rating;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
@@ -29,19 +27,17 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(long id, String comment, long rating, Post post, User user, Comment commentId, List<Comment> comments) {
+    public Comment(long id, String comment, Post post, User user, Comment commentId, List<Comment> comments) {
         this.id = id;
         this.commentbody = comment;
-        this.rating = rating;
         this.post = post;
         this.user = user;
         this.commentId = commentId;
         this.comments = comments;
     }
 
-    public Comment(String commentbody, long rating, Post post, User user, List<Comment> comments, Comment commentId) {
+    public Comment(String commentbody, Post post, User user, List<Comment> comments, Comment commentId) {
         this.commentbody = commentbody;
-        this.rating = rating;
         this.post = post;
         this.user = user;
         this.comments = comments;
@@ -62,14 +58,6 @@ public class Comment {
 
     public void setCommentbody(String commentbody) {
         this.commentbody = commentbody;
-    }
-
-    public long getRating() {
-        return rating;
-    }
-
-    public void setRating(long rating) {
-        this.rating = rating;
     }
 
     public Post getPost() {
