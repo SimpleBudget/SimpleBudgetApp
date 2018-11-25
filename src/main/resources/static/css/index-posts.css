@@ -1,12 +1,9 @@
-body, html {
-    height: 100%;
-}
 
 body {
-    font-family: "Montserrat", sans-serif;
-    /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
-
-    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     height: 100%;
 }
@@ -18,4 +15,28 @@ body {
     height: 25%;
     margin: 50px auto 20px auto;
 
+}
+
+
+@media screen and (min-width: 569px){
+    #main-card {
+        margin: 20px auto 5px auto;
+    }
+
+}
+
+@media screen and (max-height: 365px){
+    #main-card{
+        width:100%;
+        padding: 50px;
+    }
+    .footer-bottom{
+        position: -ms-device-fixed;
+    }
+    #footer{
+        position: absolute;
+    }
+    .footer{
+        position: absolute;
+    }
 }
