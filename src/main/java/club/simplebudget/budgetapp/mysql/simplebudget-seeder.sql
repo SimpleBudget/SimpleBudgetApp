@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS simplebudget_db;
+
 USE simplebudget_db;
 
 
