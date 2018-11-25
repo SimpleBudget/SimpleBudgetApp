@@ -11,8 +11,8 @@ INSERT INTO `users` (email, password, phonenumber, username)
              ('mike@mike.com', '$2a$10$VVwX4Ak9QnvAYAuyMCxYN.WsvJM2g.bYqhKqhTwxV/3in2bOl8wqW', '2555555555', 'Mike');
 
 INSERT INTO `accounts` (user_id, income, choice)
-      VALUES (1, '1000', '1'),
-             (2, '890', '1'),
+      VALUES (1, '2000', '2'),
+             (2, '890', '2'),
              (3, '1200', '2'),
              (4, '2000', '2'),
              (5, '6000', '3'),
