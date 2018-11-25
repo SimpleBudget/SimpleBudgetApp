@@ -67,6 +67,7 @@ label {
     font-size: 22px;
     font-weight: bold;
     max-width: 195px;
+    text-shadow: 1.5px 1.5px 1.5px black;
 }
 
 .teamImg {
