@@ -7,9 +7,9 @@
 <body>
 <nav th:replace="partials :: navbar"/>
 <div class="container-fluid">
-<div class="card d-flex flex-nowrap" id="main-card">
-    <h2 class="d-flex flex-nowrap">Leave a Review</h2>
-<form th:action="@{'/reviews/create'}" method="post" th:object="${review}">
+<div class="card d-flex flex-nowrap text-center" id="main-card">
+   <h2 class="d-flex flex-nowrap"><div class="container-fluid text-center">Leave a Review</div></h2>
+    <form th:action="@{'/reviews/create'}" method="post" th:object="${review}">
     <div class="slidecontainer">
         <label for="rating">Rating</label>
         <input type="range" min="1" max="5"  value ="1"  class = "slider" id="rating" th:field="*{rating}"/>
@@ -27,6 +27,10 @@
 </form>
 </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>

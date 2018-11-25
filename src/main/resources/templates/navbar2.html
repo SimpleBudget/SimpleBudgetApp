@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
 <head th:fragment="head(title)">
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title th:text="${title}">title</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
@@ -28,38 +27,36 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
-        <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
-        <a class="nav-item nav-link active navlink-custom " href="/posts">Community</a>
-        <!--<a class="nav-item nav-link active navlink-custom" href="/posts/create">Create Post</a>-->
-        <!--<a class="nav-item nav-link navlink-custom" href="/account-setup">Set Up Account</a>-->
-        <!--<a class="nav-item nav-link navlink-custom"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>-->
-        <a class="nav-item nav-link active navlink-custom" href="/profile">Your Profile</a>
-        <a class="nav-item nav-link active navlink-custom" href="/reviews/create">Leave a Review</a>
-        <form th:action="@{/logout}" th:method="POST">
-            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
-        </form>
+        <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
+            <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
+            <a class="nav-item nav-link active navlink-custom " href="/posts">Community</a>
+            <a class="nav-item nav-link active navlink-custom" href="/posts/create">Create Post</a>
+            <!--<a class="nav-item nav-link navlink-custom" href="/account-setup">Set Up Account</a>-->
+            <!--<a class="nav-item nav-link navlink-custom"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>-->
+            <a class="nav-item nav-link active navlink-custom" href="/profile">Your Profile</a>
+            <a class="nav-item nav-link active navlink-custom" href="/reviews/create">Leave a Review</a>
+            <form th:action="@{/logout}" th:method="POST">
+                <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </form>
+        </div>
+        <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
+            <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
+            <a class="nav-item nav-link active navlink-custom" href="/posts">Community</a>
+            <a th:href="'/sign-up'" class="nav-item nav-link active navlink-custom "><i class="fas fa-user-plus"></i> Sign Up</a>
+            <a th:href="'/login'" class="nav-item nav-link active navlink-custom "><i class="fas fa-sign-in-alt"></i>  Login</a>
+        </div>
+        <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET">
+            <input class="search-custom" type="search" name="search"/>
+            <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>        </form>
+        </li>
     </div>
-    <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
-        <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
-        <a class="nav-item nav-link active navlink-custom" href="/posts">Community</a>
-        <a th:href="'/sign-up'" class="nav-item nav-link active navlink-custom "><i class="fas fa-user-plus"></i> Sign Up</a>
-        <a th:href="'/login'" class="nav-item nav-link active navlink-custom "><i class="fas fa-sign-in-alt"></i>  Login</a>
-    </div>
-    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET">
-        <input class="search-custom" type="search" name="search"/>
-        <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>    </form>
-    </li>
-    </div>
-
 </nav>
-
-<footer th:fragment="footer" style="
+<footer th:fragment="footer2" class="fixed-bottom" style="
    bottom: 0;
    width:100%;
-   height:60px;
+   /*height:60px;*/
    background-color: #343a40;">
-    <div class="container text-center  white">
+    <div class="container-fluid text-center  white">
         <div class="col-12">
             <a class="link-custom" style="color: #eae0c8;" th:href="'/'">Home </a>
             <span>|</span>
@@ -70,7 +67,6 @@
             <a class="link-custom" style="color: #eae0c8;" th:href="'/supincome'">Supplemental Income</a>
             <span>|</span>
             <a class="link-custom" style="color: #eae0c8;" th:href="'/reviews'">Our Reviews</a>
-<!--thhis is a it should work test-->
 
         </div>
         <div class="col-12 footer-bottom text-center white">

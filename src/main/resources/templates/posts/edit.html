@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<nav th:replace="partials :: navbar"/>
+<nav th:replace="navbar2 :: navbar"></nav>
 <div class="container-fluid">
 <div class="card d-flex flex-nowrap text-center w-100" id="main-card">
 <form th:object="${post}" th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="post">

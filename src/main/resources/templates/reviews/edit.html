@@ -2,15 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="partials :: head('Edit a review')"/>
-    <link rel="stylesheet" th:href="@{/css/leaveareview.css}" />
+    <link rel="stylesheet" th:href="@{/css/editareview.css}" />
 
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
 <div class="container-fluid">
-
-<div class="card d-flex flex-nowrap" id="main-card">
-    <h2 class="d-flex flex-nowrap">Edit your Review</h2>
+<div class="card d-flex flex-nowrap text-center" id="main-card">
+    <h2 class="d-flex flex-nowrap"><div class="container-fluid text-center">Edit your Review</div></h2>
 <form th:object="${review}" th:action="@{'/reviews/' + ${review.id} + '/edit'}" th:method="post">
     <div class="slidecontainer">
         <label for="rating">Rating</label>
@@ -28,6 +27,12 @@
 </form>
 </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>
