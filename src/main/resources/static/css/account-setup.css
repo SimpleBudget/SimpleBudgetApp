@@ -12,9 +12,8 @@ body {
     color: white;
     width: 50%;
     height: 25%;
-    margin: 150px auto 500px auto;
-    padding: 100px
-
+    margin: 5em auto 3em auto;
+    padding: 1em;
 }
 
 .btn {
