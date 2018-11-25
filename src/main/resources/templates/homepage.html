@@ -24,8 +24,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div th:each="review : ${reviews}">
-                        <div class="col-sm-6">
-                            <div class="card text-center" style="width: 19rem;" id="main-card">
+                        <div class="col-sm-6"
+                             style= " padding-bottom: 1em;">
+                            <div class="card text-center" style="width: 15rem; height: auto" id="main-card">
                                 <div class="card-header  border-light">
                                     Our Latest Reviews
                                     <span th:text="'Posted By: ' + ${review.user.username}"></span>
@@ -47,7 +48,6 @@
         </div>
     </div>
 </section>
-
 <footer th:replace="partials :: footer"/>
 </body>
 </html>

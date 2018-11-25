@@ -7,9 +7,10 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="container-fluid">
+<div class="container-fluid text-center">
 <div class="card d-flex flex-nowrap" id="main-card">
-<h1 class="d-flex text-nowrap">Log In</h1>
+<h1 class="d-flex text-nowrap text-center">
+    <div class="container text-center">Log In</div></h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
@@ -41,6 +42,10 @@
 </form>
 </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 <footer th:replace="footer2 :: footer"/>
 </body>
 </html>

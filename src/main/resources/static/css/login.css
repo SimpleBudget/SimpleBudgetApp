@@ -1,4 +1,9 @@
+body, html {
+    height: 100%;
+}
+
 body {
+    font-family: "Montserrat", sans-serif;
     background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -12,10 +17,15 @@ body {
 #main-card {
     background-color: #343a40;
     color: white;
-    width: 50%;
+    width: 40%;
     height: 25%;
-    margin: 150px auto 500px auto;
-    padding: 100px
+    margin: 7em auto 1em auto;
+    padding: 9em;
+    padding-left: 35px;
+    padding-right: 33px;
+    padding-top: 18px;
+    padding-bottom: 20px;
+
 
 }
 
@@ -46,4 +56,5 @@ label{
     #main-card {
         width: 100%;
     }
+
 }

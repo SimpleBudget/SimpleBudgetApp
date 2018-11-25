@@ -1,6 +1,6 @@
 /* parallex section*/
 #plx {
-    height: 750px;
+    height: 790px;
     background: url("../img/stockbgimage.jpg");
     /*background-attachment: fixed;*/
     background-position: center;
@@ -88,10 +88,18 @@ hr {
 }
 
 /* ====== mobile view ====== */
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 320px) {
 
     body, html {
         height: 100%;
+    }
+    #plx {
+        height: 850px;
+        background: url("../img/stockbgimage.jpg");
+        /*background-attachment: fixed;*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     .row{
         display: flex;
@@ -100,7 +108,49 @@ hr {
         margin-right: -15px;
         margin-left: -15px;
         padding-top: 2em;
-        padding-left: inherit;
+        padding-left: 1em;
+        padding-bottom: 2em;
+    }
+    #main-card {
+        background-color: #343a40;
+        color: white;
+        width: 50%;
+        height: 25%;
+        /*margin: 6.25em auto 1.563em auto;*/
+
+    }
+
+}
+@media screen and (min-width: 350px) {
+
+    body, html {
+        height: 100%;
+    }
+    #plx {
+        height: 850px;
+        background: url("../img/stockbgimage.jpg");
+        /*background-attachment: fixed;*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .row{
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        padding-top: 2em;
+        padding-left: 2em;
+        padding-bottom: 2em;
+    }
+    #main-card {
+        background-color: #343a40;
+        color: white;
+        width: 50%;
+        height: 25%;
+        /*margin: 6.25em auto 1.563em auto;*/
+
     }
 
 }
@@ -118,6 +168,14 @@ hr {
         padding-top: 2em;
         padding-left: 11em;
     }
+    #main-card {
+        background-color: #343a40;
+        color: white;
+        width: 50%;
+        height: 25%;
+        /*margin: 6.25em auto 1.563em auto;*/
+
+    }
 
 }
 @media screen and (min-width: 1000px) {
@@ -125,9 +183,17 @@ hr {
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        padding-top: 12em;
-        padding-left: 8em;
+        padding-top: 17em;
+        padding-left: 13em;
         margin-right: -15px;
         margin-left: -15px;
+    }
+    #main-card {
+        background-color: #343a40;
+        color: white;
+        width: 125%;
+        height: 25%;
+        /*margin: 6.25em auto 1.563em auto;*/
+
     }
 }
