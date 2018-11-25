@@ -29,8 +29,7 @@
                             <div class="card text-center" style="width: 15rem; height: auto" id="main-card">
                                 <div class="card-header  border-light">
                                     Our Latest Reviews
-                                    <span th:text="'Posted By: ' + ${review.user.username}"></span>
-                                </div>
+                                    <span class="col-sm-12" th:text="'Posted By: ' + ${review.user.username}"></span>                                </div>
                                 <!--<hr/>-->
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="'This user gave us a '+${review.rating}+' out of 5!'"></h5>
