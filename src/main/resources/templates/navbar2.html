@@ -29,19 +29,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
             <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
-            <a class="nav-item nav-link active navlink-custom " href="/posts">Community</a>
-            <a class="nav-item nav-link active navlink-custom" href="/posts/create">Create Post</a>
+            <a class="nav-item nav-link active navlink-custom " href="/posts"><i class="fas fa-clipboard"></i> Community</a>
+            <a class="nav-item nav-link active navlink-custom" href="/posts/create"><i class="fas fa-paste"></i> Create Post</a>
             <!--<a class="nav-item nav-link navlink-custom" href="/account-setup">Set Up Account</a>-->
             <!--<a class="nav-item nav-link navlink-custom"  th:href="@{|/users/${#authentication.principal.id}/edit|}">Edit Profile</a>-->
-            <a class="nav-item nav-link active navlink-custom" href="/profile">Your Profile</a>
-            <a class="nav-item nav-link active navlink-custom" href="/reviews/create">Leave a Review</a>
+            <a class="nav-item nav-link active navlink-custom" href="/profile"><i class="fas fa-user"></i> Your Profile</a>
+            <a class="nav-item nav-link active navlink-custom" href="/reviews/create"><i class="fas fa-star"></i> Leave a Review</a>
             <form th:action="@{/logout}" th:method="POST">
                 <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </form>
         </div>
         <div class="navbar-nav mr-auto" sec:authorize="isAnonymous()">
             <!--<a class="nav-item nav-link active navlink-custom" href="/">Home</a>-->
-            <a class="nav-item nav-link active navlink-custom" href="/posts">Community</a>
+            <a class="nav-item nav-link active navlink-custom" href="/posts"><i class="fas fa-clipboard"></i> Community</a>
             <a th:href="'/sign-up'" class="nav-item nav-link active navlink-custom "><i class="fas fa-user-plus"></i> Sign Up</a>
             <a th:href="'/login'" class="nav-item nav-link active navlink-custom "><i class="fas fa-sign-in-alt"></i>  Login</a>
         </div>
