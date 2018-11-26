@@ -16,20 +16,22 @@
 </section>
 <div class="content text-center text-light">
     <h2>Welcome to Simple Budget</h2>
-    <h3> Everyone has money, however not everyone is good at budgeting the money they have. Whether you are already financially stable and want to maintain that or if you just want to take the steps to become more budget savy then Simple Budget is for you.</h3>
+    <h3 class="mb-0 pb-1"> Everyone has money, however not everyone is good at budgeting the money they have. Whether you are already financially stable and want to maintain that or if you just want to take the steps to become more budget savy then Simple Budget is for you.</h3>
 </div>
-<section id="plx">
-    <div class="container-fluid">
-        <div class="text-center">
-            <div class="container-fluid">
-                <div class="row">
+<div id="plx">
+    <div class="container h-100 justify-content-center align-items-center">
+        <!--<div class="text-center">-->
+            <!--<div class="container-fluid h-100 justify-content-center align-items-center">-->
+                <div class="row justify-content-center align-items-center">
                     <div th:each="review : ${reviews}">
                         <div class="col-sm-6"
                              style= " padding-bottom: 1em;">
-                            <div class="card text-center" style="width: 15rem; height: auto" id="main-card">
+                            <div class="card h-100 text-center" style="width: 16rem; height: auto" id="main-card">
                                 <div class="card-header  border-light">
-                                    Our Latest Reviews
-                                    <span class="col-sm-12" th:text="'Posted By: ' + ${review.user.username}"></span>                                </div>
+                                    <p class="col-sm-12">Our Latest Reviews</p>
+
+                                    <p class="col-sm-12" th:text="'Posted By: ' + ${review.user.username}"></p>
+                                </div>
                                 <!--<hr/>-->
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="'This user gave us a '+${review.rating}+' out of 5!'"></h5>
@@ -44,9 +46,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+           <!--</div>-->
+    <!--</div>-->
+</div>
 <footer th:replace="partials :: footer"/>
 </body>
 </html>
