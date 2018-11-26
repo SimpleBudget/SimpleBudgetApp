@@ -40,3 +40,19 @@ body {
         position: absolute;
     }
 }
+
+@media screen and (max-width: 415px){
+    #main-card{
+        width:100%;
+        padding: 50px;
+    }
+    .footer-bottom{
+        position: -ms-device-fixed;
+    }
+    #footer{
+        position: absolute;
+    }
+    .footer{
+        position: absolute;
+    }
+}

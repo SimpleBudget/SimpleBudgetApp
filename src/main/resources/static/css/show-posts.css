@@ -1,5 +1,8 @@
 body {
-    background: url("../img/stockbgimage.jpg") no-repeat center;
+    background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     height: 100%;
 }
@@ -19,10 +22,14 @@ body {
     color: white;
 }
 .btn{
-    margin-bottom: .5%;
-    margin-left: .5%;
+    /*margin-bottom: .5%;*/
+    /*margin-left: .5%;*/
     background-color: white;
     color:black;
+}
+.custom-width {
+    margin-bottom: .5%;
+    margin-left: .5%;
 }
 .card-header{
     margin-top: 1%;
