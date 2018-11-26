@@ -15,6 +15,15 @@ body {
     background-size: cover;
     height: 100%;
 }
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+
+}
 .card-body{
     color:white;
     font-weight: bold;
@@ -28,15 +37,22 @@ h2{
     text-shadow: 1.5px 1.5px 1.5px black;
 }
 i{
-    color:#eae0c8;
+    color: white;
     font-weight: bold;
     text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+i:hover {
+    color: white;
 }
 
 .btn-link{
     font-weight: bold;
     text-shadow: 1.5px 1.5px 1.5px black;
     color:#eae0c8;
+}
+.btn-link:hover{
+    color: white;
 }
 ul {list-style-type:none;}
 /*div.picture{*/
