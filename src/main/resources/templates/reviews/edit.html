@@ -23,7 +23,7 @@
         <label for="body">Body:</label>
         <textarea class="form-control" rows="8" cols="100" id="body"  th:field="*{body}" required="required"/>
     </div>
-    <input type="submit"/><br/><br/><input type="submit" value="Delete"  th:formaction="@{'/reviews/' + ${review.id} + '/delete'}" th:formmethod="post"/>
+    <input class="btn" type="submit"/><br/><br/><input class="btn" type="submit" value="Delete"  th:formaction="@{'/reviews/' + ${review.id} + '/delete'}" th:formmethod="post"/>
 </form>
 </div>
 </div>
