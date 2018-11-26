@@ -1,9 +1,12 @@
 body {
-    background: url("../img/stockbgimage.jpg") no-repeat center;
+    font-family: "Montserrat", sans-serif;
+    background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     height: 100%;
 }
-
 #main-card {
     /*background-color: black;*/
     /*color: #44a8c5;*/
