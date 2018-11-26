@@ -1,5 +1,4 @@
 body {
-    font-family: "Montserrat", sans-serif;
     background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -7,6 +6,7 @@ body {
     background-size: cover;
     height: 100%;
 }
+
 #main-card {
     /*background-color: black;*/
     /*color: #44a8c5;*/
@@ -22,10 +22,14 @@ body {
     color: white;
 }
 .btn{
-    margin-bottom: .5%;
-    margin-left: .5%;
+    /*margin-bottom: .5%;*/
+    /*margin-left: .5%;*/
     background-color: white;
     color:black;
+}
+.custom-width {
+    margin-bottom: .5%;
+    margin-left: .5%;
 }
 .card-header{
     margin-top: 1%;
