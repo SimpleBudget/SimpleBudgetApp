@@ -76,7 +76,7 @@ public class PostController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post thePost = postRepository.findOne(id);
         if (postRepository.findOne(id).getUser().getId() == loggedInUser.getId()) {
-            post.setUser(userRepository.findByUsername(loggedInUser.getUsername()));
+            post.setUser(userRepository.findOne(loggedInUser.getId()));
             post.setComments(thePost.getComments());
             postRepository.save(post);
             return "redirect:/posts";
