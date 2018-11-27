@@ -11,6 +11,9 @@ h1 {
     text-align: center;
     color: white;
 }
+.userInfo{
+    text-decoration: underline;
+}
 
 .main-card {
     width: 50%;
