@@ -15,6 +15,14 @@ body {
     background-size: cover;
     height: 100%;
 }
+#main-card {
+    background-color: #343a40;
+    color: white;
+    width: 65%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+}
 
 a {
     color: white;
@@ -55,6 +63,36 @@ i:hover {
     color: white;
 }
 ul {list-style-type:none;}
+
+@media screen and (max-width: 415px){
+    #main-card{
+        width:100%;
+    }
+    .btn{
+        width: 50%;
+    }
+
+
+}
+@media screen and (max-width: 769px) and (max-height: 1025px){
+    #main-card{
+        width:100%;
+    }
+    .btn{
+        white-space: pre-line!important;
+    }
+}
+@media screen and (max-width: 1025px) and (max-height: 769px){
+    #main-card{
+        width:100%;
+
+    }
+}
+/*@media screen and (max-width: 1025px) and (max-height: 1367px) {*/
+    /*#main-card {*/
+        /*width: 75%;*/
+    /*}*/
+/*}*/
 /*div.picture{*/
     /*background-image: url("../img/smalllogo.jpg");*/
     /*background-size: cover;*/
