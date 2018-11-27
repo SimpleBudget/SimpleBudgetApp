@@ -6,6 +6,14 @@ body, html {
 .footer{
     position: absolute;
 }
+#main-card {
+    background-color: #343a40;
+    color: white;
+    width: 65%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+}
 
 body {
     background: url("../img/stockbgimage.jpg") no-repeat center center fixed;
@@ -48,7 +56,12 @@ hr{
         /*height: 100%;*/
         /*width: 750px;*/
     /*}*/
-
+    #main-card{
+        width:100%;
+    }
+    .btn{
+        white-space: pre-line!important;
+    }
 
     .footer {
         position: relative;
