@@ -69,10 +69,16 @@ hr {
     .userInfo{
         font-size: .76rem;
     }
+    .userInfo2{
+        font-size: .76rem;
+    }
 }
 
 @media screen and (max-width: 415px) and (min-width: 410px){
     .userInfo{
+        font-size: 1rem;
+    }
+    .userInfo2{
         font-size: 1rem;
     }
 }
